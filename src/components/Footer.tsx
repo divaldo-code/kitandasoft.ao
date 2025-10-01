@@ -3,6 +3,17 @@ import { Input } from "./ui/input";
 import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
 
 const Footer = () => {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <footer className="bg-white dark:bg-[#000F3D] border-t dark:border-gray-700">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -14,7 +25,8 @@ const Footer = () => {
               <img
                 src="/logo-oficial.png"
                 alt="KitandaSoft"
-                className="h-8 w-auto"
+                className="h-8 w-auto cursor-pointer"
+                onClick={scrollToTop}
               />
             </div>
             <p className="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
@@ -67,7 +79,7 @@ const Footer = () => {
                   href="#"
                   className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm"
                 >
-                  Soluções
+                  Quem Somos
                 </a>
               </li>
               <li>
@@ -92,48 +104,72 @@ const Footer = () => {
           {/* Solutions Column */}
           <div>
             <h3 className="font-semibold text-gray-900 dark:text-white mb-4">
-              Soluções
+              Soluções KitandaSoft
             </h3>
             <ul className="space-y-3">
               <li>
-                <a
-                  href="#"
-                  className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm"
+                <button
+                  onClick={() => scrollToSection("solutions")}
+                  className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm text-left"
                 >
-                  KitandaSoft GC
-                </a>
+                  Farmácia
+                </button>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm"
+                <button
+                  onClick={() => scrollToSection("solutions")}
+                  className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm text-left"
                 >
-                  SikolaSoft GE
-                </a>
+                  Gestão Comercial
+                </button>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm"
+                <button
+                  onClick={() => scrollToSection("solutions")}
+                  className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm text-left"
                 >
-                  KitandaSoft POS
-                </a>
+                  Lavandaria
+                </button>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm"
+                <button
+                  onClick={() => scrollToSection("solutions")}
+                  className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm text-left"
                 >
-                  OspitaliSoft
-                </a>
+                  Oficina Mecânica
+                </button>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm"
+                <button
+                  onClick={() => scrollToSection("solutions")}
+                  className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm text-left"
                 >
-                  OptisGest
-                </a>
+                  Prestação de Serviços
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => scrollToSection("solutions")}
+                  className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm text-left"
+                >
+                  POS (Ponto de Venda)
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => scrollToSection("solutions")}
+                  className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm text-left"
+                >
+                  Restauração
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => scrollToSection("solutions")}
+                  className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm text-left"
+                >
+                  Retalho
+                </button>
               </li>
             </ul>
           </div>

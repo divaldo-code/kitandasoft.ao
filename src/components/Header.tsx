@@ -74,6 +74,10 @@ const Header = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -273,7 +277,8 @@ const Header = () => {
                 <img
                   src="/logo-oficial.png"
                   alt="KitandaSoft"
-                  className="h-10 w-auto"
+                  className="h-10 w-auto cursor-pointer"
+                  onClick={scrollToTop}
                 />
               </div>
             </div>

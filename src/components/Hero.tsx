@@ -1,11 +1,28 @@
 import { useState, useEffect, useRef } from "react";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
-import { CheckCircle, Star, Users, TrendingUp, X } from "lucide-react";
+import { CheckCircle, Star, Users, TrendingUp, X, Mail, MessageCircle } from "lucide-react";
+
+interface RequestFormData {
+  name: string;
+  phone: string;
+  email: string;
+  service: string;
+  method: "email" | "whatsapp" | null;
+}
 
 const Hero = () => {
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [showDemoModal, setShowDemoModal] = useState(false);
+  const [showRequestModal, setShowRequestModal] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [formData, setFormData] = useState<RequestFormData>({
+    name: "",
+    phone: "",
+    email: "",
+    service: "Demonstração",
+    method: null,
+  });
 
   useEffect(() => {
     // Trigger animations on component mount
@@ -21,6 +38,37 @@ const Hero = () => {
     setTimeout(() => {
       window.open("https://criar.app.kitandasoft.ao/Seguranca/CreateAccount", "_blank");
     }, 2000);
+  };
+
+  const handleDemoClick = () => {
+    setShowDemoModal(true);
+  };
+
+  const handleMethodSelect = (method: "email" | "whatsapp") => {
+    setFormData({ ...formData, method });
+    setShowDemoModal(false);
+    setShowRequestModal(true);
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (formData.method === "email") {
+      const subject = `Solicitação de ${formData.service}`;
+      const body = `Olá,\\n\\nGostaria de solicitar uma ${formData.service.toLowerCase()}.\\n\\nDados de contacto:\\nNome: ${formData.name}\\nTelemóvel: ${formData.phone}\\nEmail: ${formData.email}\\n\\nAguardo o vosso contacto.\\n\\nCumprimentos,\\n${formData.name}`;
+
+      window.location.href = `mailto:comercial@kitandasoft.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    } else if (formData.method === "whatsapp") {
+      const message = `Olá! Gostaria de solicitar uma ${formData.service.toLowerCase()}.\\n\\n*Dados de contacto:*\\nNome: ${formData.name}\\nTelemóvel: ${formData.phone}\\nEmail: ${formData.email}\\n\\nAguardo o vosso contacto. Obrigado!`;
+
+      window.open(
+        `https://wa.me/244923123456?text=${encodeURIComponent(message)}`,
+        "_blank",
+      );
+    }
+
+    setShowRequestModal(false);
+    setFormData({ name: "", phone: "", email: "", service: "Demonstração", method: null });
   };
 
   return (
@@ -45,6 +93,126 @@ const Hero = () => {
             <div className="mt-4">
               <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto"></div>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Demo Method Selection Modal */}
+      {showDemoModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[100]">
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-8 max-w-md w-full mx-4">
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6">
+              Como deseja solicitar?
+            </h3>
+            <div className="space-y-4">
+              <button
+                onClick={() => handleMethodSelect("email")}
+                className="w-full flex items-center justify-center px-6 py-4 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+              >
+                <Mail className="h-5 w-5 text-blue-600 mr-3" />
+                <span className="font-medium text-gray-900 dark:text-white">Por Email</span>
+              </button>
+              <button
+                onClick={() => handleMethodSelect("whatsapp")}
+                className="w-full flex items-center justify-center px-6 py-4 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+              >
+                <MessageCircle className="h-5 w-5 text-green-600 mr-3" />
+                <span className="font-medium text-gray-900 dark:text-white">Por WhatsApp</span>
+              </button>
+            </div>
+            <button
+              onClick={() => setShowDemoModal(false)}
+              className="mt-6 w-full px-4 py-2 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200"
+            >
+              Cancelar
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Request Form Modal */}
+      {showRequestModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[100]">
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-8 max-w-md w-full mx-4">
+            <div className="flex justify-between items-center mb-6">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                Solicitar Demonstração
+              </h3>
+              <button
+                onClick={() => setShowRequestModal(false)}
+                className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"
+              >
+                <X className="h-6 w-6" />
+              </button>
+            </div>
+
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  Nome *
+                </label>
+                <input
+                  type="text"
+                  required
+                  value={formData.name}
+                  onChange={(e) =>
+                    setFormData({ ...formData, name: e.target.value })
+                  }
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  Telemóvel *
+                </label>
+                <input
+                  type="tel"
+                  required
+                  value={formData.phone}
+                  onChange={(e) =>
+                    setFormData({ ...formData, phone: e.target.value })
+                  }
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  Email *
+                </label>
+                <input
+                  type="email"
+                  required
+                  value={formData.email}
+                  onChange={(e) =>
+                    setFormData({ ...formData, email: e.target.value })
+                  }
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  Serviço Solicitado
+                </label>
+                <input
+                  type="text"
+                  value={formData.service}
+                  readOnly
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-600 text-gray-900 dark:text-white"
+                />
+              </div>
+
+              <Button
+                type="submit"
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+              >
+                {formData.method === "email"
+                  ? "Enviar por Email"
+                  : "Enviar por WhatsApp"}
+              </Button>
+            </form>
           </div>
         </div>
       )}
@@ -111,7 +279,7 @@ const Hero = () => {
                 <Button
                   size="lg"
                   variant="outline"
-                  onClick={handleExperimentarClick}
+                  onClick={handleDemoClick}
                   className="border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 px-8 py-3"
                 >
                   Ver Demonstração

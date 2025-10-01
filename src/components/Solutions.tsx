@@ -3,7 +3,9 @@ import { Button } from "./ui/button";
 import { ArrowRight, X, Check } from "lucide-react";
 
 const Solutions = () => {
-  const [visibleElements, setVisibleElements] = useState<Set<string>>(new Set());
+  const [visibleElements, setVisibleElements] = useState<Set<string>>(
+    new Set(),
+  );
   const [showKitandaSoftModal, setShowKitandaSoftModal] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
 
@@ -12,27 +14,31 @@ const Solutions = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting && entry.intersectionRatio >= 0.3) {
-            const elementId = entry.target.getAttribute('data-element');
+            const elementId = entry.target.getAttribute("data-element");
             if (elementId && !visibleElements.has(elementId)) {
-              setVisibleElements(prev => new Set([...prev, elementId]));
+              setVisibleElements((prev) => new Set([...prev, elementId]));
             }
           }
         });
       },
-      { threshold: 0.3 }
+      { threshold: 0.3 },
     );
 
     if (sectionRef.current) {
-      const elements = sectionRef.current.querySelectorAll('[data-element]');
-      elements.forEach(el => observer.observe(el));
+      const elements = sectionRef.current.querySelectorAll("[data-element]");
+      elements.forEach((el) => observer.observe(el));
     }
 
     return () => observer.disconnect();
   }, [visibleElements]);
 
   const handleDemonstrationClick = () => {
-    const message = "Quero obter uma demostração do KitandaSoft, podemos agendar uma seção remota?";
-    window.open(`https://wa.me/244923123456?text=${encodeURIComponent(message)}`, "_blank");
+    const message =
+      "Quero obter uma demostração do KitandaSoft, podemos agendar uma seção remota?";
+    window.open(
+      `https://wa.me/244923123456?text=${encodeURIComponent(message)}`,
+      "_blank",
+    );
   };
 
   const handleKitandaSoftClick = () => {
@@ -41,29 +47,53 @@ const Solutions = () => {
 
   const solutions = [
     {
-      title: "KitandaSoft GC - Gestão Comercial",
+      title: "Farmácia",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
-      image: "/public/Imagens/imagem01k.webp",
+        "Sistema completo para gestão de farmácias com controlo de medicamentos e receitas.",
+      image: "/Imagens/kfarmacia01.webp",
+    },
+    {
+      title: "Gestão Comercial",
+      description:
+        "Solução completa para gestão empresarial com faturação, vendas e controlo de stocks.",
+      image: "/Imagens/imagem01k.webp",
       onClick: handleKitandaSoftClick,
     },
     {
-      title: "SikolaSoft GE - Gestão Escolar",
+      title: "Lavandaria",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
-      image: "/public/Imagens/imagem01k.webp",
+        "Sistema especializado para gestão de lavandarias com controlo de serviços e entregas.",
+      image: "/Imagens/imagem01k.webp",
     },
     {
-      title: "OspitaliSoft - Gestão Hospitalar",
+      title: "Oficina Mecânica",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
-      image: "/public/Imagens/imagem01k.webp",
+        "Gestão completa para oficinas mecânicas com orçamentos, reparações e peças.",
+      image: "/Imagens/imagem01k.webp",
     },
     {
-      title: "OptisGest - ERP Empresarial",
+      title: "Prestação de Serviços",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
-      image: "/public/Imagens/imagem01k.webp",
+        "Sistema para empresas de serviços com gestão de clientes e faturação.",
+      image: "/Imagens/imagem01k.webp",
+    },
+    {
+      title: "POS (Ponto de Venda)",
+      description:
+        "Sistema de ponto de venda completo para retalho e restauração.",
+      image: "/Imagens/imagem01k.webp",
+    },
+    {
+      title: "Restauração",
+      description:
+        "Solução especializada para restaurantes com gestão de mesas e comandas.",
+      image: "/Imagens/imagem01k.webp",
+    },
+    {
+      title: "Retalho",
+      description:
+        "Sistema completo para lojas de retalho com gestão de vendas e stocks.",
+      image: "/Imagens/imagem01k.webp",
     },
   ];
 
@@ -108,7 +138,7 @@ const Solutions = () => {
                         "Gestão de vendas",
                         "Gestão de encomendas de clientes",
                         "Gestão de compras",
-                        "Controlo de stocks"
+                        "Controlo de stocks",
                       ].map((feature, index) => (
                         <li key={index} className="flex items-start">
                           <Check className="h-4 w-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
@@ -130,7 +160,7 @@ const Solutions = () => {
                         "Controlo de tesouraria",
                         "Gestão de bancos e caixas",
                         "Contas a pagar e a receber",
-                        "Relatórios financeiros"
+                        "Relatórios financeiros",
                       ].map((feature, index) => (
                         <li key={index} className="flex items-start">
                           <Check className="h-4 w-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
@@ -152,7 +182,7 @@ const Solutions = () => {
                         "Gestão de funcionários",
                         "Processamento de salários",
                         "Controlo de assiduidade",
-                        "Gestão de documentos de RH"
+                        "Gestão de documentos de RH",
                       ].map((feature, index) => (
                         <li key={index} className="flex items-start">
                           <Check className="h-4 w-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
@@ -173,7 +203,7 @@ const Solutions = () => {
                       {[
                         "Arquivo e organização de documentos",
                         "Controlo de versões",
-                        "Partilha segura de documentos"
+                        "Partilha segura de documentos",
                       ].map((feature, index) => (
                         <li key={index} className="flex items-start">
                           <Check className="h-4 w-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
@@ -194,7 +224,7 @@ const Solutions = () => {
                       {[
                         "Inventário de ativos fixos",
                         "Controlo de bens da empresa",
-                        "Depreciações e manutenções"
+                        "Depreciações e manutenções",
                       ].map((feature, index) => (
                         <li key={index} className="flex items-start">
                           <Check className="h-4 w-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
@@ -216,7 +246,7 @@ const Solutions = () => {
                         "Múltiplos utilizadores",
                         "Relatórios personalizados",
                         "Integração entre departamentos",
-                        "Ambiente seguro e centralizado"
+                        "Ambiente seguro e centralizado",
                       ].map((feature, index) => (
                         <li key={index} className="flex items-start">
                           <Check className="h-4 w-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
@@ -243,32 +273,39 @@ const Solutions = () => {
       <section ref={sectionRef} className="bg-gray-50 dark:bg-[#000F3D] py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <p 
+            <p
               data-element="subtitle"
               className={`text-sm font-medium text-gray-600 dark:text-gray-400 mb-4 transition-all duration-700 ${
-                visibleElements.has('subtitle') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                visibleElements.has("subtitle")
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-4"
               }`}
             >
               Soluções
             </p>
-            <h2 
+            <h2
               data-element="title"
               className={`text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight transition-all duration-1000 delay-200 ${
-                visibleElements.has('title') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+                visibleElements.has("title")
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-6"
               }`}
             >
-              Recursos que transformam
+              Soluções que transformam
               <br />
               sua estratégia digital
             </h2>
-            <p 
+            <p
               data-element="description"
               className={`text-lg text-gray-600 dark:text-gray-300 max-w-4xl mx-auto transition-all duration-1000 delay-400 ${
-                visibleElements.has('description') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                visibleElements.has("description")
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-4"
               }`}
             >
-              Desenvolvemos soluções tecnológicas que se adaptam às necessidades
-              específicas do seu negócio.
+              Desenvolvemos o sistema de facturação KitandaSoft com soluções
+              tecnológicas que se adaptam às necessidades específicas do seu
+              negócio.
             </p>
           </div>
 
@@ -279,12 +316,27 @@ const Solutions = () => {
                 data-element={`card-${index}`}
                 onClick={solution.onClick}
                 className={`rounded-lg p-6 shadow-sm hover:shadow-md transition-all duration-700 delay-${600 + index * 150} bg-white dark:bg-[#001451] ${
-                  visibleElements.has(`card-${index}`) ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-5 scale-95'
-                } ${solution.onClick ? 'cursor-pointer hover:scale-105' : ''}`}
+                  visibleElements.has(`card-${index}`)
+                    ? "opacity-100 translate-y-0 scale-100"
+                    : "opacity-0 translate-y-5 scale-95"
+                } ${solution.onClick ? "cursor-pointer hover:scale-105" : ""}`}
               >
                 {/* Placeholder Image */}
-                <div className="bg-gray-100 dark:bg-gray-700 rounded-lg h-32 mb-6 flex items-center justify-center">
-                  <div className="w-16 h-16 bg-gray-200 dark:bg-gray-600 rounded-lg flex items-center justify-center">
+                <div className="bg-gray-100 dark:bg-gray-700 rounded-lg h-32 mb-6 flex items-center justify-center overflow-hidden">
+                  {solution.image ? (
+                    <img
+                      src={solution.image}
+                      alt={solution.title}
+                      className="w-full h-full object-cover rounded-lg"
+                      onError={(e) => {
+                        // Fallback to placeholder if image fails to load
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                        target.nextElementSibling?.classList.remove('hidden');
+                      }}
+                    />
+                  ) : null}
+                  <div className={`w-16 h-16 bg-gray-200 dark:bg-gray-600 rounded-lg flex items-center justify-center ${solution.image ? 'hidden' : ''}`}>
                     <svg
                       className="w-8 h-8 text-gray-400 dark:text-gray-500"
                       fill="none"
@@ -312,10 +364,12 @@ const Solutions = () => {
             ))}
           </div>
 
-          <div 
+          <div
             data-element="cta-buttons"
             className={`flex flex-col sm:flex-row gap-4 justify-center items-center transition-all duration-1000 delay-1200 ${
-              visibleElements.has('cta-buttons') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              visibleElements.has("cta-buttons")
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-4"
             }`}
           >
             <Button
@@ -324,7 +378,7 @@ const Solutions = () => {
             >
               Explorar
             </Button>
-            <button 
+            <button
               onClick={handleDemonstrationClick}
               className="flex items-center text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium group"
             >

@@ -61,20 +61,6 @@ const Pricing = () => {
 
   const onlinePlans: Plan[] = [
     {
-      id: "faturacao-backoffice-online",
-      name: "Faturação BackOffice",
-      price: "145.000,00",
-      category: "Faturação Base – Online",
-      features: [
-        "Faturação de Cliente em BackOffice",
-        "Contas Correntes",
-        "Instalação Online",
-        "Formação",
-        "5 Intervenções de Suporte Técnico",
-        "Até 1 empresa, 5 utilizadores",
-      ],
-    },
-    {
       id: "pos-retalho-online",
       name: "Faturação Venda ao Balcão (POS Retalho)",
       price: "83.000,00",
@@ -82,6 +68,20 @@ const Pricing = () => {
       features: [
         "Vendas",
         "Stock base",
+        "Instalação Online",
+        "Formação",
+        "5 Intervenções de Suporte Técnico",
+        "Até 1 empresa, 5 utilizadores",
+      ],
+    },
+    {
+      id: "faturacao-backoffice-online",
+      name: "Faturação BackOffice",
+      price: "145.000,00",
+      category: "Faturação Base – Online",
+      features: [
+        "Faturação de Cliente em BackOffice",
+        "Contas Correntes",
         "Instalação Online",
         "Formação",
         "5 Intervenções de Suporte Técnico",
@@ -130,20 +130,6 @@ const Pricing = () => {
 
   const localPlans: Plan[] = [
     {
-      id: "faturacao-backoffice-local",
-      name: "Faturação BackOffice",
-      price: "270.000,00",
-      category: "Faturação Base – Local",
-      features: [
-        "Faturação de Cliente em BackOffice",
-        "Contas Correntes",
-        "Instalação Local",
-        "Formação",
-        "5 Intervenções de Suporte Técnico",
-        "Até 3 empresas, 5 utilizadores",
-      ],
-    },
-    {
       id: "pos-retalho-local",
       name: "Faturação Venda ao Balcão (POS Retalho)",
       price: "150.000,00",
@@ -155,6 +141,20 @@ const Pricing = () => {
         "Formação",
         "5 Intervenções de Suporte Técnico",
         "Até 1 empresa, 5 utilizadores",
+      ],
+    },
+    {
+      id: "faturacao-backoffice-local",
+      name: "Faturação BackOffice",
+      price: "270.000,00",
+      category: "Faturação Base – Local",
+      features: [
+        "Faturação de Cliente em BackOffice",
+        "Contas Correntes",
+        "Instalação Local",
+        "Formação",
+        "5 Intervenções de Suporte Técnico",
+        "Até 3 empresas, 5 utilizadores",
       ],
     },
     {
