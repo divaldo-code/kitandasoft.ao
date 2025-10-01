@@ -1,7 +1,15 @@
 import { useState, useEffect, useRef } from "react";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
-import { CheckCircle, Star, Users, TrendingUp, X, Mail, MessageCircle } from "lucide-react";
+import {
+  CheckCircle,
+  Star,
+  Users,
+  TrendingUp,
+  X,
+  Mail,
+  MessageCircle,
+} from "lucide-react";
 
 interface RequestFormData {
   name: string;
@@ -36,7 +44,10 @@ const Hero = () => {
   const handleExperimentarClick = () => {
     setShowSuccessModal(true);
     setTimeout(() => {
-      window.open("https://criar.app.kitandasoft.ao/Seguranca/CreateAccount", "_blank");
+      window.open(
+        "https://criar.app.kitandasoft.ao/Seguranca/CreateAccount",
+        "_blank",
+      );
     }, 2000);
   };
 
@@ -68,7 +79,13 @@ const Hero = () => {
     }
 
     setShowRequestModal(false);
-    setFormData({ name: "", phone: "", email: "", service: "Demonstração", method: null });
+    setFormData({
+      name: "",
+      phone: "",
+      email: "",
+      service: "Demonstração",
+      method: null,
+    });
   };
 
   return (
@@ -88,7 +105,8 @@ const Hero = () => {
               Obrigado por experimentar!
             </h3>
             <p className="text-gray-600 dark:text-gray-300">
-              KitandaSoft - Software de Facturação e Gestão mais completo de Angola
+              KitandaSoft - Software de Facturação e Gestão mais completo de
+              Angola
             </p>
             <div className="mt-4">
               <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto"></div>
@@ -110,14 +128,18 @@ const Hero = () => {
                 className="w-full flex items-center justify-center px-6 py-4 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
               >
                 <Mail className="h-5 w-5 text-blue-600 mr-3" />
-                <span className="font-medium text-gray-900 dark:text-white">Por Email</span>
+                <span className="font-medium text-gray-900 dark:text-white">
+                  Por Email
+                </span>
               </button>
               <button
                 onClick={() => handleMethodSelect("whatsapp")}
                 className="w-full flex items-center justify-center px-6 py-4 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
               >
                 <MessageCircle className="h-5 w-5 text-green-600 mr-3" />
-                <span className="font-medium text-gray-900 dark:text-white">Por WhatsApp</span>
+                <span className="font-medium text-gray-900 dark:text-white">
+                  Por WhatsApp
+                </span>
               </button>
             </div>
             <button
@@ -223,22 +245,34 @@ const Hero = () => {
             {/* Left Content */}
             <div className="space-y-8">
               <div className="space-y-4">
-                <Badge className={`bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 hover:bg-blue-100 dark:hover:bg-blue-900 transition-all duration-700 ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                }`}>
+                <Badge
+                  className={`bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 hover:bg-blue-100 dark:hover:bg-blue-900 transition-all duration-700 ${
+                    isVisible
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 translate-y-4"
+                  }`}
+                >
                   ✨ Certificado 505/AGT/2025
                 </Badge>
-                <h1 className={`text-4xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight transition-all duration-1000 delay-200 ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-                }`}>
+                <h1
+                  className={`text-4xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight transition-all duration-1000 delay-200 ${
+                    isVisible
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 translate-y-6"
+                  }`}
+                >
                   KitandaSoft Software
                   <span className="text-blue-600 dark:text-blue-400 block">
                     Facturação e Gestão
                   </span>
                 </h1>
-                <p className={`text-xl text-gray-600 dark:text-gray-300 leading-relaxed transition-all duration-1000 delay-400 ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                }`}>
+                <p
+                  className={`text-xl text-gray-600 dark:text-gray-300 leading-relaxed transition-all duration-1000 delay-400 ${
+                    isVisible
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 translate-y-4"
+                  }`}
+                >
                   Software de faturação inovador certificado pela AGT que se
                   adapta ao seu negócio! Destinado a profissionais liberais,
                   micro, pequenas e médias empresas. Sem investimento inicial,
@@ -250,13 +284,18 @@ const Hero = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
                   "Faturação Online/Offline",
-                  "Gestão de Stock", 
+                  "Gestão de Stock",
                   "Contas Correntes",
-                  "POS"
+                  "POS",
                 ].map((feature, index) => (
-                  <div key={index} className={`flex items-center space-x-3 transition-all duration-700 delay-${600 + index * 100} ${
-                    isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'
-                  }`}>
+                  <div
+                    key={index}
+                    className={`flex items-center space-x-3 transition-all duration-700 delay-${600 + index * 100} ${
+                      isVisible
+                        ? "opacity-100 translate-x-0"
+                        : "opacity-0 -translate-x-4"
+                    }`}
+                  >
                     <CheckCircle className="h-5 w-5 text-green-500 dark:text-green-400" />
                     <span className="text-gray-700 dark:text-gray-300">
                       {feature}
@@ -266,9 +305,13 @@ const Hero = () => {
               </div>
 
               {/* CTA Buttons */}
-              <div className={`flex flex-col sm:flex-row gap-4 transition-all duration-1000 delay-1000 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-              }`}>
+              <div
+                className={`flex flex-col sm:flex-row gap-4 transition-all duration-1000 delay-1000 ${
+                  isVisible
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-4"
+                }`}
+              >
                 <Button
                   size="lg"
                   onClick={handleExperimentarClick}
@@ -287,9 +330,13 @@ const Hero = () => {
               </div>
 
               {/* Social Proof */}
-              <div className={`flex items-center space-x-6 pt-4 transition-all duration-1000 delay-1200 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-              }`}>
+              <div
+                className={`flex items-center space-x-6 pt-4 transition-all duration-1000 delay-1200 ${
+                  isVisible
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-4"
+                }`}
+              >
                 <div className="flex items-center space-x-2">
                   <div className="flex">
                     {[...Array(5)].map((_, i) => (
@@ -319,15 +366,19 @@ const Hero = () => {
             </div>
 
             {/* Right Content - Dashboard Preview */}
-            <div className={`relative transition-all duration-1200 delay-800 ${
-              isVisible ? 'opacity-100 translate-x-0 scale-100' : 'opacity-0 translate-x-8 scale-95'
-            }`}>
+            <div
+              className={`relative transition-all duration-1200 delay-800 ${
+                isVisible
+                  ? "opacity-100 translate-x-0 scale-100"
+                  : "opacity-0 translate-x-8 scale-95"
+              }`}
+            >
               <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-6 transform rotate-3 hover:rotate-0 transition-transform duration-300">
                 {/* Dashboard Header */}
                 <div className="flex items-center justify-between mb-6">
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                  <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
                     Dashboard Executivo
-                  </h3>
+                  </h2>
                   <Badge className="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200">
                     Ao Vivo
                   </Badge>
