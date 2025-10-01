@@ -4,7 +4,7 @@ import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-white border-t">
+    <footer className="bg-white dark:bg-[#000F3D] border-t dark:border-gray-700">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
@@ -17,7 +17,7 @@ const Footer = () => {
                 className="h-8 w-auto"
               />
             </div>
-            <p className="text-gray-600 mb-6 text-sm leading-relaxed">
+            <p className="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
               Emite faturas certificadas pela AGT em minutos de forma fácil.
               <br />
               Comece hoje!
@@ -29,30 +29,35 @@ const Footer = () => {
                 <Input
                   type="email"
                   placeholder="Seu email aqui"
-                  className="flex-1 text-sm"
+                  className="flex-1 text-sm bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white"
                 />
-                <Button className="bg-blue-600 hover:bg-blue-700 text-white px-6">
+                <Button className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700 text-white px-6">
                   Experimentar
                 </Button>
               </div>
-              <p className="text-xs text-gray-500 leading-relaxed">
-                By subscribing you agree to with our{" "}
-                <a href="#" className="text-blue-600 hover:underline">
-                  Privacy Policy
+              <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+                Ao submeter seu email está de acordo com a nossa{" "}
+                <a
+                  href="#"
+                  className="text-blue-600 dark:text-blue-400 hover:underline"
+                >
+                  Política de privacidade
                 </a>{" "}
-                and provide consent to receive updates from our company.
+                e da seu consentimento para ser contactado.
               </p>
             </div>
           </div>
 
           {/* Links Column */}
           <div>
-            <h3 className="font-semibold text-gray-900 mb-4">Links</h3>
+            <h3 className="font-semibold text-gray-900 dark:text-white mb-4">
+              Links
+            </h3>
             <ul className="space-y-3">
               <li>
                 <a
                   href="#"
-                  className="text-gray-600 hover:text-blue-600 text-sm"
+                  className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm"
                 >
                   Início
                 </a>
@@ -60,15 +65,15 @@ const Footer = () => {
               <li>
                 <a
                   href="#"
-                  className="text-gray-600 hover:text-blue-600 text-sm"
+                  className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm"
                 >
-                  Sobre nós
+                  Soluções
                 </a>
               </li>
               <li>
                 <a
                   href="#"
-                  className="text-gray-600 hover:text-blue-600 text-sm"
+                  className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm"
                 >
                   Recursos
                 </a>
@@ -76,7 +81,7 @@ const Footer = () => {
               <li>
                 <a
                   href="#"
-                  className="text-gray-600 hover:text-blue-600 text-sm"
+                  className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm"
                 >
                   FAQ
                 </a>
@@ -86,12 +91,14 @@ const Footer = () => {
 
           {/* Solutions Column */}
           <div>
-            <h3 className="font-semibold text-gray-900 mb-4">Soluções</h3>
+            <h3 className="font-semibold text-gray-900 dark:text-white mb-4">
+              Soluções
+            </h3>
             <ul className="space-y-3">
               <li>
                 <a
                   href="#"
-                  className="text-gray-600 hover:text-blue-600 text-sm"
+                  className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm"
                 >
                   KitandaSoft GC
                 </a>
@@ -99,7 +106,7 @@ const Footer = () => {
               <li>
                 <a
                   href="#"
-                  className="text-gray-600 hover:text-blue-600 text-sm"
+                  className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm"
                 >
                   SikolaSoft GE
                 </a>
@@ -107,7 +114,7 @@ const Footer = () => {
               <li>
                 <a
                   href="#"
-                  className="text-gray-600 hover:text-blue-600 text-sm"
+                  className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm"
                 >
                   KitandaSoft POS
                 </a>
@@ -115,7 +122,7 @@ const Footer = () => {
               <li>
                 <a
                   href="#"
-                  className="text-gray-600 hover:text-blue-600 text-sm"
+                  className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm"
                 >
                   OspitaliSoft
                 </a>
@@ -123,7 +130,7 @@ const Footer = () => {
               <li>
                 <a
                   href="#"
-                  className="text-gray-600 hover:text-blue-600 text-sm"
+                  className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm"
                 >
                   OptisGest
                 </a>
@@ -133,12 +140,14 @@ const Footer = () => {
 
           {/* Social Media Column */}
           <div>
-            <h3 className="font-semibold text-gray-900 mb-4">Siga-nos</h3>
+            <h3 className="font-semibold text-gray-900 dark:text-white mb-4">
+              Siga-nos
+            </h3>
             <ul className="space-y-3">
               <li>
                 <a
                   href="#"
-                  className="flex items-center text-gray-600 hover:text-blue-600 text-sm"
+                  className="flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm"
                 >
                   <Facebook className="h-4 w-4 mr-2" />
                   Facebook
@@ -147,7 +156,7 @@ const Footer = () => {
               <li>
                 <a
                   href="#"
-                  className="flex items-center text-gray-600 hover:text-blue-600 text-sm"
+                  className="flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm"
                 >
                   <Instagram className="h-4 w-4 mr-2" />
                   Instagram
@@ -156,7 +165,7 @@ const Footer = () => {
               <li>
                 <a
                   href="#"
-                  className="flex items-center text-gray-600 hover:text-blue-600 text-sm"
+                  className="flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm"
                 >
                   <svg
                     className="h-4 w-4 mr-2"
@@ -171,7 +180,7 @@ const Footer = () => {
               <li>
                 <a
                   href="#"
-                  className="flex items-center text-gray-600 hover:text-blue-600 text-sm"
+                  className="flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm"
                 >
                   <Linkedin className="h-4 w-4 mr-2" />
                   LinkedIn
@@ -180,7 +189,7 @@ const Footer = () => {
               <li>
                 <a
                   href="#"
-                  className="flex items-center text-gray-600 hover:text-blue-600 text-sm"
+                  className="flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm"
                 >
                   <Youtube className="h-4 w-4 mr-2" />
                   Youtube
@@ -191,27 +200,27 @@ const Footer = () => {
         </div>
 
         {/* Bottom Border */}
-        <div className="border-t pt-8">
+        <div className="border-t dark:border-gray-700 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-gray-600 dark:text-gray-400">
               © 2025 GC Lucan. Todos os direitos reservados.
             </p>
             <div className="flex space-x-6">
               <a
                 href="#"
-                className="text-sm text-gray-600 hover:text-blue-600 underline"
+                className="text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 underline"
               >
                 Política de privacidade
               </a>
               <a
                 href="#"
-                className="text-sm text-gray-600 hover:text-blue-600 underline"
+                className="text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 underline"
               >
                 Termos de serviço
               </a>
               <a
                 href="#"
-                className="text-sm text-gray-600 hover:text-blue-600 underline"
+                className="text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 underline"
               >
                 Configurações de cookies
               </a>
