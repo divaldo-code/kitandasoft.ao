@@ -56,44 +56,44 @@ const Solutions = () => {
       title: "Gestão Comercial",
       description:
         "Solução completa para gestão empresarial com faturação, vendas e controlo de stocks.",
-      image: "/Imagens/imagem01k.webp",
+      image: "/Imagens/kgcomercial01.webp",
       onClick: handleKitandaSoftClick,
     },
     {
       title: "Lavandaria",
       description:
         "Sistema especializado para gestão de lavandarias com controlo de serviços e entregas.",
-      image: "/Imagens/imagem01k.webp",
+      image: "/Imagens/klavandaria01.webp",
     },
     {
       title: "Oficina Mecânica",
       description:
         "Gestão completa para oficinas mecânicas com orçamentos, reparações e peças.",
-      image: "/Imagens/imagem01k.webp",
+      image: "/Imagens/komecanica01.webp",
     },
     {
       title: "Prestação de Serviços",
       description:
         "Sistema para empresas de serviços com gestão de clientes e faturação.",
-      image: "/Imagens/imagem01k.webp",
+      image: "/Imagens/kpservicos01.webp",
     },
     {
       title: "POS (Ponto de Venda)",
       description:
         "Sistema de ponto de venda completo para retalho e restauração.",
-      image: "/Imagens/imagem01k.webp",
+      image: "/Imagens/kpos01.webp",
     },
     {
       title: "Restauração",
       description:
         "Solução especializada para restaurantes com gestão de mesas e comandas.",
-      image: "/Imagens/imagem01k.webp",
+      image: "/Imagens/krestauracao01.webp",
     },
     {
       title: "Retalho",
       description:
         "Sistema completo para lojas de retalho com gestão de vendas e stocks.",
-      image: "/Imagens/imagem01k.webp",
+      image: "/Imagens/kretalho01.webp",
     },
   ];
 
@@ -331,12 +331,14 @@ const Solutions = () => {
                       onError={(e) => {
                         // Fallback to placeholder if image fails to load
                         const target = e.target as HTMLImageElement;
-                        target.style.display = 'none';
-                        target.nextElementSibling?.classList.remove('hidden');
+                        target.style.display = "none";
+                        target.nextElementSibling?.classList.remove("hidden");
                       }}
                     />
                   ) : null}
-                  <div className={`w-16 h-16 bg-gray-200 dark:bg-gray-600 rounded-lg flex items-center justify-center ${solution.image ? 'hidden' : ''}`}>
+                  <div
+                    className={`w-16 h-16 bg-gray-200 dark:bg-gray-600 rounded-lg flex items-center justify-center ${solution.image ? "hidden" : ""}`}
+                  >
                     <svg
                       className="w-8 h-8 text-gray-400 dark:text-gray-500"
                       fill="none"

@@ -14,43 +14,43 @@ const testimonials: Testimonial[] = [
   {
     id: 1,
     quote:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
+      "O KitandaSoft revolucionou a gestão da minha farmácia! A sua versatilidade é incrível. Controlo o stock de medicamentos, faço facturas e emito receitas de forma integrada. O módulo POS é rápido e intuitivo. Para qualquer retalho, é a solução completa que simplifica operações complexas. Recomendo!",
     name: "Carlos Silva",
     title: "CEO",
-    company: "Empresa Inovadora",
+    company: "Grupo Farmaceutico",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Carlos",
   },
   {
     id: 2,
     quote:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
+      "A nossa lavandaria industrial precisava de organização. O KitandaSoft deu-nos clareza total! Controlamos entradas/saidas de roupa, faturamos por serviço e gerimos o cadastro de clientes com facilidade. O sistema é robusto e adapta-se perfeitamente a negócios baseados em serviços. Muito satisfeito!",
     name: "Maria Santos",
-    title: "Diretora",
-    company: "Grupo Empresarial",
+    title: "Proprietária",
+    company: "Lavandaria",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Maria",
   },
   {
     id: 3,
     quote:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
+      "Na minha oficina, controlar ordens de serviço e stock de peças era um caos. O KitandaSoft trouxe controle total! Automatiza facturação, gere o fluxo de caixa e emite relatórios precisos. Para serviços ou comércio, a gestão tornou-se muito mais eficiente e profissional. Um aliado indispensável para o negócio!",
     name: "João Oliveira",
     title: "Gerente",
-    company: "Startup Tech",
+    company: "Oficina",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Joao",
   },
   {
     id: 4,
     quote:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
+      "Como dono de um café e bar, precisava de um sistema rápido e fiável. O KitandaSoft no POS é fantástico! Faturação rápida, gestão de mesas e controlo de stock integrado. Tornou o atendimento mais ágil e o fecho de caixa, infalível. Para restauração e retalho, é a eficiência que precisávamos.",
     name: "Ana Costa",
     title: "Fundadora",
-    company: "Tech Solutions",
+    company: "Café e Bar",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Ana",
   },
   {
     id: 5,
     quote:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
+      "Para a nossa empresa de prestação de serviços, a gestão de clientes e projetos era descentralizada. O KitandaSoft centralizou tudo! Emitimos faturas, controlamos o fluxo de entrada/saída e gerimos o stock de materiais usados. É flexível e adapta-se perfeitamente ao nosso modelo de negócio. Fantástico!",
     name: "Pedro Mendes",
     title: "CTO",
     company: "Digital Corp",
@@ -163,21 +163,7 @@ const Testimonials = () => {
                   >
                     <div className="bg-white border border-gray-200 dark:border-gray-700 rounded-lg p-8 h-full dark:bg-[#001451]">
                       {/* Webflow Logo */}
-                      <div className="mb-6">
-                        <svg
-                          className="h-6 w-auto text-gray-600 dark:text-gray-400"
-                          viewBox="0 0 100 24"
-                          fill="currentColor"
-                        >
-                          <path d="M24.6 8.1c-.4-2.1-1.8-3.8-3.8-4.6-1.2-.5-2.5-.7-3.8-.7-2.8 0-5.4 1.2-7.2 3.3C8 7.3 7.2 8.9 7.2 10.6c0 1.7.8 3.3 2.2 4.5 1.4 1.2 3.2 1.9 5.1 1.9 1.3 0 2.6-.3 3.7-.9 1.1-.6 2-1.4 2.7-2.4l-2.1-1.5c-.4.6-.9 1.1-1.5 1.4-.6.3-1.3.5-2 .5-1.1 0-2.1-.4-2.9-1.1-.8-.7-1.3-1.6-1.4-2.6h8.8c.1-.4.1-.8.1-1.2 0-.4 0-.8-.1-1.1zm-8.7 1.4c.2-.9.7-1.7 1.4-2.3.7-.6 1.6-.9 2.5-.9.9 0 1.8.3 2.5.9.7.6 1.1 1.4 1.3 2.3h-7.7z" />
-                          <path d="M35.8 2.4h-2.9v14.4h2.9V8.6c0-1.2.4-2.3 1.2-3.1.8-.8 1.9-1.2 3-1.2.8 0 1.5.2 2.1.6l1.4-2.5c-.9-.6-2-.9-3.1-.9-1.4 0-2.7.5-3.7 1.4V2.4z" />
-                          <path d="M52.1 7.8c-1.2-.5-2.5-.7-3.8-.7-2.8 0-5.4 1.2-7.2 3.3-1.8 2.1-2.6 4.7-2.6 6.4 0 1.7.8 3.3 2.2 4.5 1.4 1.2 3.2 1.9 5.1 1.9 1.3 0 2.6-.3 3.7-.9 1.1-.6 2-1.4 2.7-2.4l-2.1-1.5c-.4.6-.9 1.1-1.5 1.4-.6.3-1.3.5-2 .5-1.1 0-2.1-.4-2.9-1.1-.8-.7-1.3-1.6-1.4-2.6h8.8c.1-.4.1-.8.1-1.2 0-.4 0-.8-.1-1.1-.4-2.1-1.8-3.8-3.8-4.6zm-6.2 3.5c.2-.9.7-1.7 1.4-2.3.7-.6 1.6-.9 2.5-.9.9 0 1.8.3 2.5.9.7.6 1.1 1.4 1.3 2.3h-7.7z" />
-                          <path d="M65.4 7.1c-1.4 0-2.7.5-3.7 1.4V7.4h-2.9v9.4h2.9v-5.2c0-1.2.4-2.3 1.2-3.1.8-.8 1.9-1.2 3-1.2.8 0 1.5.2 2.1.6l1.4-2.5c-.9-.6-2-.9-3.1-.9z" />
-                          <path d="M75.8 16.8h2.9V2.4h-2.9v14.4z" />
-                          <path d="M88.1 7.1c-2.8 0-5.4 1.2-7.2 3.3-1.8 2.1-2.6 4.7-2.6 6.4 0 1.7.8 3.3 2.2 4.5 1.4 1.2 3.2 1.9 5.1 1.9 2 0 3.9-.7 5.4-2 1.5-1.3 2.3-3 2.3-4.8 0-1.8-.8-3.5-2.3-4.8-1.5-1.3-3.4-2-5.4-2zm0 11.1c-1.1 0-2.1-.4-2.9-1.1-.8-.7-1.3-1.6-1.3-2.6s.5-1.9 1.3-2.6c.8-.7 1.8-1.1 2.9-1.1s2.1.4 2.9 1.1c.8.7 1.3 1.6 1.3 2.6s-.5 1.9-1.3 2.6c-.8.7-1.8 1.1-2.9 1.1z" />
-                          <path d="M100 7.4l-2.8 6.2-2.8-6.2h-3.2l4.4 9.4h3.2l4.4-9.4H100z" />
-                        </svg>
-                      </div>
+                      <div className="mb-6"></div>
 
                       {/* Quote */}
                       <blockquote className="text-gray-900 dark:text-white text-lg leading-relaxed mb-8">
