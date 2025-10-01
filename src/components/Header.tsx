@@ -81,7 +81,7 @@ const Header = () => {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      element.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -295,7 +295,7 @@ const Header = () => {
                 <img
                   src="/logo-oficial.png"
                   alt="KitandaSoft"
-                  className="h-10 w-auto cursor-pointer"
+                  className="h-8 w-auto cursor-pointer"
                   onClick={scrollToTop}
                 />
               </div>

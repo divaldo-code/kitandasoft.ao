@@ -4,7 +4,7 @@ import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
 
 const Footer = () => {
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const scrollToSection = (sectionId: string) => {
@@ -243,13 +243,13 @@ const Footer = () => {
             </p>
             <div className="flex space-x-6">
               <a
-                href="#"
+                href="/privacy-policy"
                 className="text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 underline"
               >
                 Política de privacidade
               </a>
               <a
-                href="#"
+                href="/terms-of-service"
                 className="text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 underline"
               >
                 Termos de serviço
