@@ -11,9 +11,9 @@ const Contact = () => {
               <h2 className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-2">
                 Contato
               </h2>
-              <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
                 Fale conosco
-              </h1>
+              </h2>
               <p className="text-lg text-gray-600 dark:text-gray-300">
                 Estamos prontos para ajudar sua empresa a evoluir digitalmente
               </p>

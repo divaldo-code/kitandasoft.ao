@@ -32,20 +32,23 @@ const Header = () => {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      const scrollPercent = (currentScrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-      
+      const scrollPercent =
+        (currentScrollY /
+          (document.documentElement.scrollHeight - window.innerHeight)) *
+        100;
+
       // Header visibility logic
       if (currentScrollY > lastScrollY && currentScrollY > 100) {
         setHeaderVisible(false);
       } else {
         setHeaderVisible(true);
       }
-      
+
       // Contact button logic (desktop only)
       if (window.innerWidth > 768) {
         setShowContactButton(scrollPercent >= 20 && scrollPercent < 80);
       }
-      
+
       // Mobile nav logic
       if (window.innerWidth <= 768) {
         if (currentScrollY > lastScrollY && currentScrollY > 100) {
@@ -54,7 +57,7 @@ const Header = () => {
           setShowMobileNav(true);
         }
       }
-      
+
       setLastScrollY(currentScrollY);
     };
 
@@ -75,20 +78,23 @@ const Header = () => {
   }, []);
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   const handleExperimentarClick = () => {
     setShowSuccessModal(true);
     setTimeout(() => {
-      window.open("https://criar.app.kitandasoft.ao/Seguranca/CreateAccount", "_blank");
+      window.open(
+        "https://criar.app.kitandasoft.ao/Seguranca/CreateAccount",
+        "_blank",
+      );
     }, 2000);
   };
 
@@ -203,7 +209,8 @@ const Header = () => {
               Obrigado por experimentar!
             </h3>
             <p className="text-gray-600 dark:text-gray-300">
-              KitandaSoft - Software de Facturação e Gestão mais completo de Angola
+              KitandaSoft - Software de Facturação e Gestão mais completo de
+              Angola
             </p>
             <div className="mt-4">
               <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto"></div>
@@ -211,7 +218,6 @@ const Header = () => {
           </div>
         </div>
       )}
-
       {/* Mobile Contact Modal */}
       {showMobileContactModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[100] md:hidden">
@@ -283,10 +289,11 @@ const Header = () => {
           </div>
         </div>
       )}
-
-      <header className={`dark:bg-[#000F3D] shadow-sm dark:border-gray-700 sticky top-0 z-50 bg-white border-b-2 transition-transform duration-300 ${
-        headerVisible ? 'translate-y-0' : '-translate-y-full'
-      }`}>
+      <header
+        className={`dark:bg-[#000F3D] shadow-sm dark:border-gray-700 sticky top-0 z-50 bg-white border-b-2 transition-transform duration-300 ${
+          headerVisible ? "translate-y-0" : "-translate-y-full"
+        }`}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
@@ -397,7 +404,11 @@ const Header = () => {
                 onClick={toggleTheme}
                 className="p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
               >
-                {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+                {isDark ? (
+                  <Sun className="h-5 w-5" />
+                ) : (
+                  <Moon className="h-5 w-5" />
+                )}
               </button>
 
               <Button
@@ -420,14 +431,22 @@ const Header = () => {
                 onClick={toggleTheme}
                 className="p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
               >
-                {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+                {isDark ? (
+                  <Sun className="h-4 w-4" />
+                ) : (
+                  <Moon className="h-4 w-4" />
+                )}
               </button>
 
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 p-2"
               >
-                {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                {isMenuOpen ? (
+                  <X className="h-6 w-6" />
+                ) : (
+                  <Menu className="h-6 w-6" />
+                )}
               </button>
             </div>
           </div>
@@ -436,12 +455,6 @@ const Header = () => {
           {isMenuOpen && (
             <div className="md:hidden">
               <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t dark:border-gray-700">
-                <a
-                  href="#"
-                  className="block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
-                >
-                  Início
-                </a>
                 <div className="px-3 py-2">
                   <div className="text-base font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Soluções
@@ -456,20 +469,7 @@ const Header = () => {
                     </button>
                   ))}
                 </div>
-                <div className="px-3 py-2">
-                  <div className="text-base font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Recursos
-                  </div>
-                  {recursos.map((recurso, index) => (
-                    <button
-                      key={index}
-                      onClick={recurso.onClick}
-                      className="block w-full text-left px-4 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400"
-                    >
-                      {recurso.name}
-                    </button>
-                  ))}
-                </div>
+
                 <button
                   onClick={() => scrollToSection("faq")}
                   className="block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
@@ -477,12 +477,6 @@ const Header = () => {
                   FAQ
                 </button>
                 <div className="px-3 py-2 space-y-2">
-                  <Button
-                    variant="ghost"
-                    className="w-full justify-start text-gray-700 dark:text-gray-300"
-                  >
-                    Entrar
-                  </Button>
                   <Button
                     onClick={handleExperimentarClick}
                     className="w-full bg-blue-600 hover:bg-blue-700 text-white"
@@ -495,7 +489,6 @@ const Header = () => {
           )}
         </div>
       </header>
-
       {/* Desktop Floating Contact Button (Left Side) */}
       {showContactButton && (
         <div className="hidden md:block fixed left-6 top-1/2 transform -translate-y-1/2 z-40">
@@ -508,7 +501,6 @@ const Header = () => {
           </button>
         </div>
       )}
-
       {/* Mobile Bottom Navigation */}
       {showMobileNav && (
         <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 z-50 transition-transform duration-300">

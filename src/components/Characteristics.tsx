@@ -2,7 +2,9 @@ import { useState, useEffect, useRef } from "react";
 import { Check } from "lucide-react";
 
 const Characteristics = () => {
-  const [visibleElements, setVisibleElements] = useState<Set<string>>(new Set());
+  const [visibleElements, setVisibleElements] = useState<Set<string>>(
+    new Set(),
+  );
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -10,19 +12,19 @@ const Characteristics = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting && entry.intersectionRatio >= 0.3) {
-            const elementId = entry.target.getAttribute('data-element');
+            const elementId = entry.target.getAttribute("data-element");
             if (elementId && !visibleElements.has(elementId)) {
-              setVisibleElements(prev => new Set([...prev, elementId]));
+              setVisibleElements((prev) => new Set([...prev, elementId]));
             }
           }
         });
       },
-      { threshold: 0.3 }
+      { threshold: 0.3 },
     );
 
     if (sectionRef.current) {
-      const elements = sectionRef.current.querySelectorAll('[data-element]');
-      elements.forEach(el => observer.observe(el));
+      const elements = sectionRef.current.querySelectorAll("[data-element]");
+      elements.forEach((el) => observer.observe(el));
     }
 
     return () => observer.disconnect();
@@ -104,21 +106,29 @@ const Characteristics = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="py-20 bg-white dark:bg-[#000F3D]">
+    <section
+      id="caracteristicas"
+      ref={sectionRef}
+      className="py-20 bg-white dark:bg-[#000F3D]"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 
+          <h2
             data-element="title"
             className={`text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6 transition-all duration-1000 ${
-              visibleElements.has('title') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+              visibleElements.has("title")
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-6"
             }`}
           >
             Características
           </h2>
-          <p 
+          <p
             data-element="description"
             className={`text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto transition-all duration-1000 delay-300 ${
-              visibleElements.has('description') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              visibleElements.has("description")
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-4"
             }`}
           >
             Descubra todas as funcionalidades que tornam nosso software a
@@ -132,7 +142,9 @@ const Characteristics = () => {
               key={index}
               data-element={`card-${index}`}
               className={`bg-white p-6 shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-700 delay-${500 + index * 100} border-gray-100 dark:border-gray-700 border-[0px] dark:bg-[#001451] rounded-[11.282699999999998px] ${
-                visibleElements.has(`card-${index}`) ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-5 scale-95'
+                visibleElements.has(`card-${index}`)
+                  ? "opacity-100 translate-y-0 scale-100"
+                  : "opacity-0 translate-y-5 scale-95"
               }`}
             >
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-6 leading-tight">

@@ -3,7 +3,9 @@ import { Button } from "./ui/button";
 import { Phone, MessageCircle, X } from "lucide-react";
 
 const CTA = () => {
-  const [visibleElements, setVisibleElements] = useState<Set<string>>(new Set());
+  const [visibleElements, setVisibleElements] = useState<Set<string>>(
+    new Set(),
+  );
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [showSpecialistModal, setShowSpecialistModal] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -13,19 +15,19 @@ const CTA = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting && entry.intersectionRatio >= 0.3) {
-            const elementId = entry.target.getAttribute('data-element');
+            const elementId = entry.target.getAttribute("data-element");
             if (elementId && !visibleElements.has(elementId)) {
-              setVisibleElements(prev => new Set([...prev, elementId]));
+              setVisibleElements((prev) => new Set([...prev, elementId]));
             }
           }
         });
       },
-      { threshold: 0.3 }
+      { threshold: 0.3 },
     );
 
     if (sectionRef.current) {
-      const elements = sectionRef.current.querySelectorAll('[data-element]');
-      elements.forEach(el => observer.observe(el));
+      const elements = sectionRef.current.querySelectorAll("[data-element]");
+      elements.forEach((el) => observer.observe(el));
     }
 
     return () => observer.disconnect();
@@ -34,7 +36,10 @@ const CTA = () => {
   const handleComecarClick = () => {
     setShowSuccessModal(true);
     setTimeout(() => {
-      window.open("https://criar.app.kitandasoft.ao/Seguranca/CreateAccount", "_blank");
+      window.open(
+        "https://criar.app.kitandasoft.ao/Seguranca/CreateAccount",
+        "_blank",
+      );
     }, 2000);
   };
 
@@ -44,7 +49,10 @@ const CTA = () => {
 
   const handleWhatsAppSpecialist = () => {
     const message = "Preciso falar com um especialista do KitandaSoft.";
-    window.open(`https://wa.me/244923123456?text=${encodeURIComponent(message)}`, "_blank");
+    window.open(
+      `https://wa.me/244923123456?text=${encodeURIComponent(message)}`,
+      "_blank",
+    );
     setShowSpecialistModal(false);
   };
 
@@ -54,9 +62,9 @@ const CTA = () => {
   };
 
   const scrollToContact = () => {
-    const element = document.getElementById('contact');
+    const element = document.getElementById("contact");
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
     setShowSpecialistModal(false);
   };
@@ -82,7 +90,8 @@ const CTA = () => {
               Obrigado por experimentar!
             </h3>
             <p className="text-gray-600 dark:text-gray-300">
-              KitandaSoft - Software de Facturação e Gestão mais completo de Angola
+              KitandaSoft - Software de Facturação e Gestão mais completo de
+              Angola
             </p>
             <div className="mt-4">
               <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto"></div>
@@ -156,24 +165,31 @@ const CTA = () => {
         </div>
       )}
 
-      <section ref={sectionRef} className="dark:bg-[#000F3D] py-20 bg-[#0028a3] text-[white]">
+      <section
+        ref={sectionRef}
+        className="dark:bg-[#000F3D] py-20 bg-[#0028a3] text-[white]"
+      >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="space-y-8 text-accent-foreground">
             <div className="text-accent-foreground">
-              <h1 
+              <h2
                 data-element="title"
                 className={`text-4xl lg:text-6xl font-bold mb-6 leading-tight text-white transition-all duration-1000 ${
-                  visibleElements.has('title') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+                  visibleElements.has("title")
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-6"
                 }`}
               >
                 Comece a usar
                 <br />
                 hoje a KitandaSoft
-              </h1>
-              <p 
+              </h2>
+              <p
                 data-element="description"
                 className={`text-lg lg:text-xl max-w-3xl mx-auto text-white dark:text-white transition-all duration-1000 delay-300 ${
-                  visibleElements.has('description') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                  visibleElements.has("description")
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-4"
                 }`}
               >
                 Não perca mais tempo. Comece hoje a otimizar seus processos com
@@ -181,13 +197,15 @@ const CTA = () => {
               </p>
             </div>
 
-            <div 
+            <div
               data-element="cta-buttons"
               className={`flex flex-col sm:flex-row gap-4 justify-center items-center transition-all duration-1000 delay-600 ${
-                visibleElements.has('cta-buttons') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                visibleElements.has("cta-buttons")
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-4"
               }`}
             >
-              <Button 
+              <Button
                 onClick={handleComecarClick}
                 className="px-8 py-3 text-lg font-medium rounded-lg border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 bg-accent"
               >

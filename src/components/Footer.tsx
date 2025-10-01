@@ -50,7 +50,7 @@ const Footer = () => {
               <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
                 Ao submeter seu email está de acordo com a nossa{" "}
                 <a
-                  href="#"
+                  href="/privacy-policy"
                   className="text-blue-600 dark:text-blue-400 hover:underline"
                 >
                   Política de privacidade
@@ -68,8 +68,9 @@ const Footer = () => {
             <ul className="space-y-3">
               <li>
                 <a
-                  href="#"
+                  href="#inicio"
                   className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm"
+                  onClick={scrollToTop}
                 >
                   Início
                 </a>
@@ -84,16 +85,36 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="#caracteristicas"
                   className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection("caracteristicas");
+                  }}
                 >
-                  Recursos
+                  Características
                 </a>
               </li>
               <li>
                 <a
-                  href="#"
+                  href="#planos"
                   className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection("planos");
+                  }}
+                >
+                  Planos
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#faq"
+                  className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection("faq");
+                  }}
                 >
                   FAQ
                 </a>

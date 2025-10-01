@@ -319,23 +319,30 @@ const Pricing = () => {
 
   return (
     <>
-      <section className="bg-gray-50 py-20 dark:bg-[#000F3D] text-[white] dark:text-[#eeeaea] relative overflow-hidden">
+      <section
+        id="planos"
+        className="bg-gray-50 py-20 dark:bg-[#000F3D] text-[white] dark:text-[#eeeaea] relative overflow-hidden"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 dark:text-[#ffffff]">
           {/* Header Section */}
-          <div 
-            ref={el => sectionRefs.current['header'] = el}
+          <div
+            ref={(el) => (sectionRefs.current["header"] = el)}
             data-section="header"
             className={`text-center mb-16 dark:text-[#ffffff] relative transition-all duration-1000 ${
-              visibleSections.has('header') 
-                ? 'opacity-100 translate-y-0' 
-                : 'opacity-0 translate-y-10'
+              visibleSections.has("header")
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-10"
             }`}
           >
             {/* Animated border */}
-            <div className={`absolute top-0 left-1/2 h-1 bg-blue-600 transition-all duration-1000 ${
-              visibleSections.has('header') ? 'w-full -translate-x-1/2' : 'w-0 -translate-x-1/2'
-            }`}></div>
-            
+            <div
+              className={`absolute top-0 left-1/2 h-1 bg-blue-600 transition-all duration-1000 ${
+                visibleSections.has("header")
+                  ? "w-full -translate-x-1/2"
+                  : "w-0 -translate-x-1/2"
+              }`}
+            ></div>
+
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 dark:text-[#ffffff] pt-8">
               Planos
             </h2>
@@ -371,94 +378,105 @@ const Pricing = () => {
           </div>
 
           {/* Regular Plans */}
-          {Object.entries(regularGroupedPlans).map(([category, plans], categoryIndex) => (
-            <div 
-              key={category} 
-              ref={el => sectionRefs.current[category] = el}
-              data-section={category}
-              className={`mb-12 relative transition-all duration-1000 delay-${categoryIndex * 200} ${
-                visibleSections.has(category) 
-                  ? 'opacity-100 translate-y-0' 
-                  : 'opacity-0 translate-y-10'
-              }`}
-            >
-              {/* Animated border */}
-              <div className={`absolute top-0 left-1/2 h-1 bg-blue-600 transition-all duration-1000 delay-300 ${
-                visibleSections.has(category) ? 'w-full -translate-x-1/2' : 'w-0 -translate-x-1/2'
-              }`}></div>
-              
-              <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center dark:text-[#ffffff] pt-8">
-                {category}
-              </h3>
-              <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                {plans.map((plan, planIndex) => (
-                  <div
-                    key={plan.id}
-                    className={`bg-white dark:bg-[#001451] rounded-lg shadow-lg p-8 relative transition-all duration-700 delay-${planIndex * 100} ${
-                      visibleSections.has(category) 
-                        ? 'opacity-100 translate-y-0 scale-100' 
-                        : 'opacity-0 translate-y-5 scale-95'
-                    } ${plan.popular ? "ring-2 ring-blue-600" : ""}`}
-                  >
-                    {plan.popular && (
-                      <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                        <span className="bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-medium">
-                          Mais Popular
-                        </span>
-                      </div>
-                    )}
+          {Object.entries(regularGroupedPlans).map(
+            ([category, plans], categoryIndex) => (
+              <div
+                key={category}
+                ref={(el) => (sectionRefs.current[category] = el)}
+                data-section={category}
+                className={`mb-12 relative transition-all duration-1000 delay-${categoryIndex * 200} ${
+                  visibleSections.has(category)
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-10"
+                }`}
+              >
+                {/* Animated border */}
+                <div
+                  className={`absolute top-0 left-1/2 h-1 bg-blue-600 transition-all duration-1000 delay-300 ${
+                    visibleSections.has(category)
+                      ? "w-full -translate-x-1/2"
+                      : "w-0 -translate-x-1/2"
+                  }`}
+                ></div>
 
-                    <div className="text-center mb-6">
-                      <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-                        {plan.name}
-                      </h4>
-                      <div className="text-3xl font-bold text-blue-600 dark:text-white">
-                        {plan.price} Kz
-                        <span className="text-sm text-gray-500 dark:text-gray-300 font-normal">
-                          {" "}+ IVA
-                        </span>
-                      </div>
-                    </div>
-
-                    <ul className="space-y-3 mb-8">
-                      {plan.features.map((feature, index) => (
-                        <li key={index} className="flex items-start">
-                          <Check className="h-5 w-5 text-green-600 mr-3 mt-0.5 flex-shrink-0" />
-                          <span className="text-gray-700 dark:text-white text-sm">
-                            {feature}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    <Button
-                      onClick={() => handleRequestClick(plan)}
-                      className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+                <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center dark:text-[#ffffff] pt-8">
+                  {category}
+                </h3>
+                <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                  {plans.map((plan, planIndex) => (
+                    <div
+                      key={plan.id}
+                      className={`bg-white dark:bg-[#001451] rounded-lg shadow-lg p-8 relative transition-all duration-700 delay-${planIndex * 100} ${
+                        visibleSections.has(category)
+                          ? "opacity-100 translate-y-0 scale-100"
+                          : "opacity-0 translate-y-5 scale-95"
+                      } ${plan.popular ? "ring-2 ring-blue-600" : ""}`}
                     >
-                      Solicitar
-                    </Button>
-                  </div>
-                ))}
+                      {plan.popular && (
+                        <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                          <span className="bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-medium">
+                            Mais Popular
+                          </span>
+                        </div>
+                      )}
+
+                      <div className="text-center mb-6">
+                        <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                          {plan.name}
+                        </h4>
+                        <div className="text-3xl font-bold text-blue-600 dark:text-white">
+                          {plan.price} Kz
+                          <span className="text-sm text-gray-500 dark:text-gray-300 font-normal">
+                            {" "}
+                            + IVA
+                          </span>
+                        </div>
+                      </div>
+
+                      <ul className="space-y-3 mb-8">
+                        {plan.features.map((feature, index) => (
+                          <li key={index} className="flex items-start">
+                            <Check className="h-5 w-5 text-green-600 mr-3 mt-0.5 flex-shrink-0" />
+                            <span className="text-gray-700 dark:text-white text-sm">
+                              {feature}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+
+                      <Button
+                        onClick={() => handleRequestClick(plan)}
+                        className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+                      >
+                        Solicitar
+                      </Button>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            ),
+          )}
 
           {/* Special Plans Section - Gestão Comercial and Tesouraria */}
           {specialPlans.length > 0 && (
-            <div 
-              ref={el => sectionRefs.current['special-plans'] = el}
+            <div
+              ref={(el) => (sectionRefs.current["special-plans"] = el)}
               data-section="special-plans"
               className={`mb-12 relative transition-all duration-1000 ${
-                visibleSections.has('special-plans') 
-                  ? 'opacity-100 translate-y-0' 
-                  : 'opacity-0 translate-y-10'
+                visibleSections.has("special-plans")
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10"
               }`}
             >
               {/* Animated border */}
-              <div className={`absolute top-0 left-1/2 h-1 bg-blue-600 transition-all duration-1000 delay-300 ${
-                visibleSections.has('special-plans') ? 'w-full -translate-x-1/2' : 'w-0 -translate-x-1/2'
-              }`}></div>
-              
+              <div
+                className={`absolute top-0 left-1/2 h-1 bg-blue-600 transition-all duration-1000 delay-300 ${
+                  visibleSections.has("special-plans")
+                    ? "w-full -translate-x-1/2"
+                    : "w-0 -translate-x-1/2"
+                }`}
+              ></div>
+
               <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center dark:text-[#ffffff] pt-8">
                 Planos Empresariais
               </h3>
@@ -467,9 +485,9 @@ const Pricing = () => {
                   <div
                     key={plan.id}
                     className={`bg-white dark:bg-[#001451] rounded-lg shadow-lg p-8 relative max-w-md w-full transition-all duration-700 delay-${planIndex * 200} ${
-                      visibleSections.has('special-plans') 
-                        ? 'opacity-100 translate-y-0 scale-100' 
-                        : 'opacity-0 translate-y-5 scale-95'
+                      visibleSections.has("special-plans")
+                        ? "opacity-100 translate-y-0 scale-100"
+                        : "opacity-0 translate-y-5 scale-95"
                     } ${plan.popular ? "ring-2 ring-blue-600" : ""}`}
                   >
                     {plan.popular && (
@@ -487,7 +505,8 @@ const Pricing = () => {
                       <div className="text-3xl font-bold text-blue-600 dark:text-white">
                         {plan.price} Kz
                         <span className="text-sm text-gray-500 dark:text-gray-300 font-normal">
-                          {" "}+ IVA
+                          {" "}
+                          + IVA
                         </span>
                       </div>
                     </div>
