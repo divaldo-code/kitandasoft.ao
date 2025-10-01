@@ -3,10 +3,9 @@ import { Button } from "./ui/button";
 import { ArrowRight, X, Check } from "lucide-react";
 
 const Solutions = () => {
-  const [visibleElements, setVisibleElements] = useState<Set<string>>(
-    new Set(),
-  );
-  const [showKitandaSoftModal, setShowKitandaSoftModal] = useState(false);
+  const [visibleElements, setVisibleElements] = useState<Set<string>>(new Set());
+  const [showModal, setShowModal] = useState(false);
+  const [selectedSolution, setSelectedSolution] = useState<any>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -14,254 +13,227 @@ const Solutions = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting && entry.intersectionRatio >= 0.3) {
-            const elementId = entry.target.getAttribute("data-element");
+            const elementId = entry.target.getAttribute('data-element');
             if (elementId && !visibleElements.has(elementId)) {
-              setVisibleElements((prev) => new Set([...prev, elementId]));
+              setVisibleElements(prev => new Set([...prev, elementId]));
             }
           }
         });
       },
-      { threshold: 0.3 },
+      { threshold: 0.3 }
     );
 
     if (sectionRef.current) {
-      const elements = sectionRef.current.querySelectorAll("[data-element]");
-      elements.forEach((el) => observer.observe(el));
+      const elements = sectionRef.current.querySelectorAll('[data-element]');
+      elements.forEach(el => observer.observe(el));
     }
 
     return () => observer.disconnect();
   }, [visibleElements]);
 
+  // Prevent scrolling when modal is open
+  useEffect(() => {
+    if (showModal) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [showModal]);
+
   const handleDemonstrationClick = () => {
-    const message =
-      "Quero obter uma demostração do KitandaSoft, podemos agendar uma seção remota?";
-    window.open(
-      `https://wa.me/244923123456?text=${encodeURIComponent(message)}`,
-      "_blank",
-    );
+    const message = "Quero obter uma demostração do KitandaSoft, podemos agendar uma seção remota?";
+    window.open(`https://wa.me/244923123456?text=${encodeURIComponent(message)}`, "_blank");
   };
 
-  const handleKitandaSoftClick = () => {
-    setShowKitandaSoftModal(true);
+  const handleSolutionClick = (solution: any) => {
+    setSelectedSolution(solution);
+    setShowModal(true);
   };
 
   const solutions = [
     {
       title: "Farmácia",
-      description:
-        "Sistema completo para gestão de farmácias com controlo de medicamentos e receitas.",
+      description: "Sistema completo para gestão de farmácias com controlo de medicamentos e receitas.",
       image: "/Imagens/kfarmacia01.webp",
+      icon: "🏥",
+      features: [
+        "Gestão de lotes e datas de validade",
+        "Controlo de medicamentos sujeitos a receita médica",
+        "Alertas de stock mínimo e máximo",
+        "Integração com prescrições eletrónicas",
+        "Gestão de comparticipações",
+        "Relatórios de vendas por fármaco",
+        "Controlo de temperatura de armazenamento"
+      ]
     },
     {
       title: "Gestão Comercial",
-      description:
-        "Solução completa para gestão empresarial com faturação, vendas e controlo de stocks.",
+      description: "Solução completa para gestão empresarial com faturação, vendas e controlo de stocks.",
       image: "/Imagens/kgcomercial01.webp",
-      onClick: handleKitandaSoftClick,
+      icon: "📊",
+      features: [
+        "Faturação profissional (IVA & SAFT-AO)",
+        "Gestão de clientes e fornecedores",
+        "Controlo de contas correntes",
+        "Análise de rentabilidade por produto",
+        "Múltiplos pontos de venda",
+        "Gestão de preços e promoções",
+        "Relatórios de desempenho comercial"
+      ]
     },
     {
       title: "Lavandaria",
-      description:
-        "Sistema especializado para gestão de lavandarias com controlo de serviços e entregas.",
+      description: "Sistema especializado para gestão de lavandarias com controlo de serviços e entregas.",
       image: "/Imagens/klavandaria01.webp",
+      icon: "👕",
+      features: [
+        "Ficha técnica de peças por cliente",
+        "Controlo de estados de roupa (recolhida, lavada, entregue)",
+        "Gestão de tickets de serviço",
+        "Controlo de qualidade na receção",
+        "Gestão de fidelização de clientes",
+        "SMS automáticas para avisos de entrega",
+        "Relatórios de produtividade"
+      ]
     },
     {
       title: "Oficina Mecânica",
-      description:
-        "Gestão completa para oficinas mecânicas com orçamentos, reparações e peças.",
+      description: "Gestão completa para oficinas mecânicas com orçamentos, reparações e peças.",
       image: "/Imagens/komecanica01.webp",
+      icon: "🔧",
+      features: [
+        "Gestão de viaturas e históricos",
+        "Ordens de serviço e orçamentos",
+        "Controlo de stocks de peças",
+        "Integração com seguradoras",
+        "Agenda de marcações online",
+        "Relatórios de tempo de reparação",
+        "Gestão de garantias de trabalho"
+      ]
     },
     {
       title: "Prestação de Serviços",
-      description:
-        "Sistema para empresas de serviços com gestão de clientes e faturação.",
+      description: "Sistema para empresas de serviços com gestão de clientes e faturação.",
       image: "/Imagens/kpservicos01.webp",
+      icon: "👨‍💼",
+      features: [
+        "Gestão de projetos e tarefas",
+        "Controlo de horas e custos",
+        "Faturação por projetos",
+        "Gestão de documentação por cliente",
+        "Relatórios de rentabilidade por projeto",
+        "Controlo de prazos e entregáveis",
+        "Portal do cliente para acompanhamento"
+      ]
     },
     {
       title: "POS (Ponto de Venda)",
-      description:
-        "Sistema de ponto de venda completo para retalho e restauração.",
+      description: "Sistema de ponto de venda completo para retalho e restauração.",
       image: "/Imagens/kpos01.webp",
+      icon: "💳",
+      features: [
+        "Interface touchscreen otimizado",
+        "Múltiplas formas de pagamento",
+        "Impressão automática de faturas",
+        "Gestão de aberturas/fechos de caixa",
+        "Controlo de operadores por turno",
+        "Vendas rápidas e devoluções",
+        "Integração com leitores de código de barras"
+      ]
     },
     {
       title: "Restauração",
-      description:
-        "Solução especializada para restaurantes com gestão de mesas e comandas.",
+      description: "Solução especializada para restaurantes com gestão de mesas e comandas.",
       image: "/Imagens/krestauracao01.webp",
+      icon: "🍽️",
+      features: [
+        "Gestão de mesas e comandas",
+        "Impressão automática para cozinha/bar",
+        "Controlo de stocks em tempo real",
+        "Gestão de cartões de fidelização",
+        "Múltiplos pontos de venda (sala, take-away)",
+        "Relatórios de venda por período/horário",
+        "Integração com delivery externo"
+      ]
     },
     {
       title: "Retalho",
-      description:
-        "Sistema completo para lojas de retalho com gestão de vendas e stocks.",
+      description: "Sistema completo para lojas de retalho com gestão de vendas e stocks.",
       image: "/Imagens/kretalho01.webp",
+      icon: "🛒",
+      features: [
+        "Gestão multi-departamento",
+        "Controlo de stocks automático",
+        "Preços dinâmicos e campanhas",
+        "Gestão de fornecedores e compras",
+        "Faturação integrada",
+        "Relatórios de margens por categoria",
+        "Gestão de espaços comerciais"
+      ]
     },
   ];
 
   return (
     <>
-      {/* KitandaSoft GE Modal */}
-      {showKitandaSoftModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[100] p-4">
+      {/* Solution Modal */}
+      {showModal && selectedSolution && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-[100] p-4">
           <div className="bg-white dark:bg-gray-800 rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
             <div className="p-6">
               <div className="flex justify-between items-center mb-6">
-                <div>
-                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-                    KITANDASOFT GE
-                  </h2>
-                  <p className="text-lg text-blue-600 dark:text-blue-400">
-                    Solução Completa de Gestão Empresarial
-                  </p>
+                <div className="flex items-center space-x-3">
+                  <span className="text-3xl">{selectedSolution.icon}</span>
+                  <div>
+                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+                      {selectedSolution.title}
+                    </h2>
+                    <p className="text-lg text-gray-600 dark:text-gray-400">
+                      {selectedSolution.description}
+                    </p>
+                  </div>
                 </div>
                 <button
-                  onClick={() => setShowKitandaSoftModal(false)}
+                  onClick={() => setShowModal(false)}
                   className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"
                 >
                   <X className="h-6 w-6" />
                 </button>
               </div>
 
+              {/* Solution Image */}
+              {selectedSolution.image && (
+                <div className="mb-6">
+                  <img
+                    src={selectedSolution.image}
+                    alt={selectedSolution.title}
+                    className="w-full h-48 object-cover rounded-lg"
+                  />
+                </div>
+              )}
+
               <div className="space-y-6">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
                   Características Principais:
                 </h3>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {/* Gestão Comercial & Faturação */}
-                  <div className="space-y-3">
-                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white flex items-center">
-                      📈 Gestão Comercial & Faturação
-                    </h4>
-                    <ul className="space-y-2">
-                      {[
-                        "Otimização de faturação",
-                        "Gestão de vendas",
-                        "Gestão de encomendas de clientes",
-                        "Gestão de compras",
-                        "Controlo de stocks",
-                      ].map((feature, index) => (
-                        <li key={index} className="flex items-start">
-                          <Check className="h-4 w-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
-                          <span className="text-gray-700 dark:text-gray-300 text-sm">
-                            {feature}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Gestão Financeira */}
-                  <div className="space-y-3">
-                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white flex items-center">
-                      💰 Gestão Financeira
-                    </h4>
-                    <ul className="space-y-2">
-                      {[
-                        "Controlo de tesouraria",
-                        "Gestão de bancos e caixas",
-                        "Contas a pagar e a receber",
-                        "Relatórios financeiros",
-                      ].map((feature, index) => (
-                        <li key={index} className="flex items-start">
-                          <Check className="h-4 w-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
-                          <span className="text-gray-700 dark:text-gray-300 text-sm">
-                            {feature}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Recursos Humanos */}
-                  <div className="space-y-3">
-                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white flex items-center">
-                      👥 Recursos Humanos
-                    </h4>
-                    <ul className="space-y-2">
-                      {[
-                        "Gestão de funcionários",
-                        "Processamento de salários",
-                        "Controlo de assiduidade",
-                        "Gestão de documentos de RH",
-                      ].map((feature, index) => (
-                        <li key={index} className="flex items-start">
-                          <Check className="h-4 w-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
-                          <span className="text-gray-700 dark:text-gray-300 text-sm">
-                            {feature}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Gestão Documental */}
-                  <div className="space-y-3">
-                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white flex items-center">
-                      📑 Gestão Documental
-                    </h4>
-                    <ul className="space-y-2">
-                      {[
-                        "Arquivo e organização de documentos",
-                        "Controlo de versões",
-                        "Partilha segura de documentos",
-                      ].map((feature, index) => (
-                        <li key={index} className="flex items-start">
-                          <Check className="h-4 w-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
-                          <span className="text-gray-700 dark:text-gray-300 text-sm">
-                            {feature}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Gestão de Património */}
-                  <div className="space-y-3">
-                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white flex items-center">
-                      🏢 Gestão de Património
-                    </h4>
-                    <ul className="space-y-2">
-                      {[
-                        "Inventário de ativos fixos",
-                        "Controlo de bens da empresa",
-                        "Depreciações e manutenções",
-                      ].map((feature, index) => (
-                        <li key={index} className="flex items-start">
-                          <Check className="h-4 w-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
-                          <span className="text-gray-700 dark:text-gray-300 text-sm">
-                            {feature}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Funcionalidades Adicionais */}
-                  <div className="space-y-3">
-                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white flex items-center">
-                      🔧 Funcionalidades Adicionais
-                    </h4>
-                    <ul className="space-y-2">
-                      {[
-                        "Múltiplos utilizadores",
-                        "Relatórios personalizados",
-                        "Integração entre departamentos",
-                        "Ambiente seguro e centralizado",
-                      ].map((feature, index) => (
-                        <li key={index} className="flex items-start">
-                          <Check className="h-4 w-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
-                          <span className="text-gray-700 dark:text-gray-300 text-sm">
-                            {feature}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {selectedSolution.features.map((feature: string, index: number) => (
+                    <div key={index} className="flex items-start space-x-3">
+                      <Check className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                      <span className="text-gray-700 dark:text-gray-300 text-sm">
+                        {feature}
+                      </span>
+                    </div>
+                  ))}
                 </div>
 
                 <div className="mt-8 p-4 bg-blue-50 dark:bg-blue-900/30 rounded-lg text-center">
                   <p className="text-lg font-bold text-blue-800 dark:text-blue-200">
-                    SOFTWARE CERTIFICADO Nº 505/AGT/2025
+                    Software de Facturação Certificado pela AGT Nº 505/AGT/2025
                   </p>
                 </div>
               </div>
@@ -270,42 +242,35 @@ const Solutions = () => {
         </div>
       )}
 
-      <section ref={sectionRef} className="bg-gray-50 dark:bg-[#000F3D] py-20">
+      <section ref={sectionRef} id="solutions" className="bg-gray-50 dark:bg-[#000F3D] py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <p
+            <p 
               data-element="subtitle"
               className={`text-sm font-medium text-gray-600 dark:text-gray-400 mb-4 transition-all duration-700 ${
-                visibleElements.has("subtitle")
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-4"
+                visibleElements.has('subtitle') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
               }`}
             >
               Soluções
             </p>
-            <h2
+            <h2 
               data-element="title"
               className={`text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight transition-all duration-1000 delay-200 ${
-                visibleElements.has("title")
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-6"
+                visibleElements.has('title') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
               }`}
             >
-              Soluções que transformam
+              Recursos que transformam
               <br />
               sua estratégia digital
             </h2>
-            <p
+            <p 
               data-element="description"
               className={`text-lg text-gray-600 dark:text-gray-300 max-w-4xl mx-auto transition-all duration-1000 delay-400 ${
-                visibleElements.has("description")
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-4"
+                visibleElements.has('description') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
               }`}
             >
-              Desenvolvemos o sistema de facturação KitandaSoft com soluções
-              tecnológicas que se adaptam às necessidades específicas do seu
-              negócio.
+              Desenvolvemos soluções tecnológicas que se adaptam às necessidades
+              específicas do seu negócio.
             </p>
           </div>
 
@@ -314,14 +279,12 @@ const Solutions = () => {
               <div
                 key={index}
                 data-element={`card-${index}`}
-                onClick={solution.onClick}
-                className={`rounded-lg p-6 shadow-sm hover:shadow-md transition-all duration-700 delay-${600 + index * 150} bg-white dark:bg-[#001451] ${
-                  visibleElements.has(`card-${index}`)
-                    ? "opacity-100 translate-y-0 scale-100"
-                    : "opacity-0 translate-y-5 scale-95"
-                } ${solution.onClick ? "cursor-pointer hover:scale-105" : ""}`}
+                onClick={() => handleSolutionClick(solution)}
+                className={`rounded-lg p-6 shadow-sm hover:shadow-md transition-all duration-700 delay-${600 + index * 150} bg-white dark:bg-[#001451] cursor-pointer hover:scale-105 ${
+                  visibleElements.has(`card-${index}`) ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-5 scale-95'
+                }`}
               >
-                {/* Placeholder Image */}
+                {/* Solution Image */}
                 <div className="bg-gray-100 dark:bg-gray-700 rounded-lg h-32 mb-6 flex items-center justify-center overflow-hidden">
                   {solution.image ? (
                     <img
@@ -331,27 +294,13 @@ const Solutions = () => {
                       onError={(e) => {
                         // Fallback to placeholder if image fails to load
                         const target = e.target as HTMLImageElement;
-                        target.style.display = "none";
-                        target.nextElementSibling?.classList.remove("hidden");
+                        target.style.display = 'none';
+                        target.nextElementSibling?.classList.remove('hidden');
                       }}
                     />
                   ) : null}
-                  <div
-                    className={`w-16 h-16 bg-gray-200 dark:bg-gray-600 rounded-lg flex items-center justify-center ${solution.image ? "hidden" : ""}`}
-                  >
-                    <svg
-                      className="w-8 h-8 text-gray-400 dark:text-gray-500"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                      />
-                    </svg>
+                  <div className={`w-16 h-16 bg-gray-200 dark:bg-gray-600 rounded-lg flex items-center justify-center ${solution.image ? 'hidden' : ''}`}>
+                    <span className="text-2xl">{solution.icon}</span>
                   </div>
                 </div>
 
@@ -366,12 +315,10 @@ const Solutions = () => {
             ))}
           </div>
 
-          <div
+          <div 
             data-element="cta-buttons"
             className={`flex flex-col sm:flex-row gap-4 justify-center items-center transition-all duration-1000 delay-1200 ${
-              visibleElements.has("cta-buttons")
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-4"
+              visibleElements.has('cta-buttons') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             }`}
           >
             <Button
@@ -380,7 +327,7 @@ const Solutions = () => {
             >
               Explorar
             </Button>
-            <button
+            <button 
               onClick={handleDemonstrationClick}
               className="flex items-center text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium group"
             >

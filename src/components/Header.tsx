@@ -94,32 +94,50 @@ const Header = () => {
 
   const solutions = [
     {
-      name: "KitandaSoft GE",
-      description: "Software de facturação e gestão empresarial",
-      category: "Empresarial",
-      onClick: () => scrollToSection("solutions"),
-    },
-    {
-      name: "SikolaSoft",
-      description: "Sistema de gestão escolar completo",
-      category: "Educação",
-      onClick: () => scrollToSection("solutions"),
-    },
-    {
-      name: "OspitaliSoft",
-      description: "Gestão hospitalar e clínica",
+      name: "Farmácia",
+      description: "Sistema completo para gestão de farmácias",
       category: "Saúde",
       onClick: () => scrollToSection("solutions"),
     },
     {
-      name: "OptisGest",
-      description: "Gestão empresarial integrada",
+      name: "Gestão Comercial",
+      description: "Solução completa para gestão empresarial",
       category: "Empresarial",
       onClick: () => scrollToSection("solutions"),
     },
     {
-      name: "POS",
-      description: "Sistema de ponto de venda",
+      name: "Lavandaria",
+      description: "Sistema especializado para lavandarias",
+      category: "Serviços",
+      onClick: () => scrollToSection("solutions"),
+    },
+    {
+      name: "Oficina Mecânica",
+      description: "Gestão completa para oficinas mecânicas",
+      category: "Automóvel",
+      onClick: () => scrollToSection("solutions"),
+    },
+    {
+      name: "Prestação de Serviços",
+      description: "Sistema para empresas de serviços",
+      category: "Serviços",
+      onClick: () => scrollToSection("solutions"),
+    },
+    {
+      name: "POS (Ponto de Venda)",
+      description: "Sistema de ponto de venda completo",
+      category: "Comercial",
+      onClick: () => scrollToSection("solutions"),
+    },
+    {
+      name: "Restauração",
+      description: "Solução especializada para restaurantes",
+      category: "Alimentação",
+      onClick: () => scrollToSection("solutions"),
+    },
+    {
+      name: "Retalho",
+      description: "Sistema completo para lojas de retalho",
       category: "Comercial",
       onClick: () => scrollToSection("solutions"),
     },
