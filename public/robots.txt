@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://88f07001-c1cd-4060-a9e5-43f9a026c78b.canvases.tempo.build/sitemap.xml
+
+# Disallow storyboard and development files
+Disallow: /tempobook/
+Disallow: /src/
+Disallow: /*.json
+Disallow: /*.ts
+Disallow: /*.tsx

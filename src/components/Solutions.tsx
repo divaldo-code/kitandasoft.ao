@@ -3,7 +3,9 @@ import { Button } from "./ui/button";
 import { ArrowRight, X, Check, Monitor } from "lucide-react";
 
 const Solutions = () => {
-  const [visibleElements, setVisibleElements] = useState<Set<string>>(new Set());
+  const [visibleElements, setVisibleElements] = useState<Set<string>>(
+    new Set(),
+  );
   const [showModal, setShowModal] = useState(false);
   const [showExploreModal, setShowExploreModal] = useState(false);
   const [selectedSolution, setSelectedSolution] = useState<any>(null);
@@ -18,9 +20,9 @@ const Solutions = () => {
     };
 
     checkIsDesktop();
-    window.addEventListener('resize', checkIsDesktop);
+    window.addEventListener("resize", checkIsDesktop);
 
-    return () => window.removeEventListener('resize', checkIsDesktop);
+    return () => window.removeEventListener("resize", checkIsDesktop);
   }, []);
 
   useEffect(() => {
@@ -28,19 +30,19 @@ const Solutions = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting && entry.intersectionRatio >= 0.3) {
-            const elementId = entry.target.getAttribute('data-element');
+            const elementId = entry.target.getAttribute("data-element");
             if (elementId && !visibleElements.has(elementId)) {
-              setVisibleElements(prev => new Set([...prev, elementId]));
+              setVisibleElements((prev) => new Set([...prev, elementId]));
             }
           }
         });
       },
-      { threshold: 0.3 }
+      { threshold: 0.3 },
     );
 
     if (sectionRef.current) {
-      const elements = sectionRef.current.querySelectorAll('[data-element]');
-      elements.forEach(el => observer.observe(el));
+      const elements = sectionRef.current.querySelectorAll("[data-element]");
+      elements.forEach((el) => observer.observe(el));
     }
 
     return () => observer.disconnect();
@@ -49,19 +51,23 @@ const Solutions = () => {
   // Prevent scrolling when modal is open
   useEffect(() => {
     if (showModal || showExploreModal) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     }
 
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     };
   }, [showModal, showExploreModal]);
 
   const handleDemonstrationClick = () => {
-    const message = "Quero obter uma demostração do KitandaSoft, podemos agendar uma seção remota?";
-    window.open(`https://wa.me/244923123456?text=${encodeURIComponent(message)}`, "_blank");
+    const message =
+      "Quero obter uma demostração do KitandaSoft, podemos agendar uma seção remota?";
+    window.open(
+      `https://wa.me/244923123456?text=${encodeURIComponent(message)}`,
+      "_blank",
+    );
   };
 
   const handleSolutionClick = (solution: any) => {
@@ -79,7 +85,7 @@ const Solutions = () => {
         title: "Visualização Completa",
         description: "Para uma melhor experiência de navegação",
         icon: "💻",
-        features: ["Use a versão web para visualizar todas as funcionalidades"]
+        features: ["Use a versão web para visualizar todas as funcionalidades"],
       });
     }
   };
@@ -87,7 +93,8 @@ const Solutions = () => {
   const solutions = [
     {
       title: "Farmácia",
-      description: "Sistema completo para gestão de farmácias com controlo de medicamentos e receitas.",
+      description:
+        "Sistema completo para gestão de farmácias com controlo de medicamentos e receitas.",
       image: "/Imagens/kfarmacia01.webp",
       icon: "🏥",
       features: [
@@ -97,12 +104,13 @@ const Solutions = () => {
         "Integração com prescrições eletrónicas",
         "Gestão de comparticipações",
         "Relatórios de vendas por fármaco",
-        "Controlo de temperatura de armazenamento"
-      ]
+        "Controlo de temperatura de armazenamento",
+      ],
     },
     {
       title: "Gestão Comercial",
-      description: "Solução completa para gestão empresarial com faturação, vendas e controlo de stocks.",
+      description:
+        "Solução completa para gestão empresarial com faturação, vendas e controlo de stocks.",
       image: "/Imagens/kgcomercial01.webp",
       icon: "📊",
       features: [
@@ -112,12 +120,13 @@ const Solutions = () => {
         "Análise de rentabilidade por produto",
         "Múltiplos pontos de venda",
         "Gestão de preços e promoções",
-        "Relatórios de desempenho comercial"
-      ]
+        "Relatórios de desempenho comercial",
+      ],
     },
     {
       title: "Lavandaria",
-      description: "Sistema especializado para gestão de lavandarias com controlo de serviços e entregas.",
+      description:
+        "Sistema especializado para gestão de lavandarias com controlo de serviços e entregas.",
       image: "/Imagens/klavandaria01.webp",
       icon: "👕",
       features: [
@@ -127,12 +136,13 @@ const Solutions = () => {
         "Controlo de qualidade na receção",
         "Gestão de fidelização de clientes",
         "SMS automáticas para avisos de entrega",
-        "Relatórios de produtividade"
-      ]
+        "Relatórios de produtividade",
+      ],
     },
     {
       title: "Oficina Mecânica",
-      description: "Gestão completa para oficinas mecânicas com orçamentos, reparações e peças.",
+      description:
+        "Gestão completa para oficinas mecânicas com orçamentos, reparações e peças.",
       image: "/Imagens/komecanica01.webp",
       icon: "🔧",
       features: [
@@ -142,12 +152,13 @@ const Solutions = () => {
         "Integração com seguradoras",
         "Agenda de marcações online",
         "Relatórios de tempo de reparação",
-        "Gestão de garantias de trabalho"
-      ]
+        "Gestão de garantias de trabalho",
+      ],
     },
     {
       title: "Prestação de Serviços",
-      description: "Sistema para empresas de serviços com gestão de clientes e faturação.",
+      description:
+        "Sistema para empresas de serviços com gestão de clientes e faturação.",
       image: "/Imagens/kpservicos01.webp",
       icon: "👨‍💼",
       features: [
@@ -157,12 +168,13 @@ const Solutions = () => {
         "Gestão de documentação por cliente",
         "Relatórios de rentabilidade por projeto",
         "Controlo de prazos e entregáveis",
-        "Portal do cliente para acompanhamento"
-      ]
+        "Portal do cliente para acompanhamento",
+      ],
     },
     {
       title: "POS (Ponto de Venda)",
-      description: "Sistema de ponto de venda completo para retalho e restauração.",
+      description:
+        "Sistema de ponto de venda completo para retalho e restauração.",
       image: "/Imagens/kpos01.webp",
       icon: "💳",
       features: [
@@ -172,12 +184,13 @@ const Solutions = () => {
         "Gestão de aberturas/fechos de caixa",
         "Controlo de operadores por turno",
         "Vendas rápidas e devoluções",
-        "Integração com leitores de código de barras"
-      ]
+        "Integração com leitores de código de barras",
+      ],
     },
     {
       title: "Restauração",
-      description: "Solução especializada para restaurantes com gestão de mesas e comandas.",
+      description:
+        "Solução especializada para restaurantes com gestão de mesas e comandas.",
       image: "/Imagens/krestauracao01.webp",
       icon: "🍽️",
       features: [
@@ -187,12 +200,13 @@ const Solutions = () => {
         "Gestão de cartões de fidelização",
         "Múltiplos pontos de venda (sala, take-away)",
         "Relatórios de venda por período/horário",
-        "Integração com delivery externo"
-      ]
+        "Integração com delivery externo",
+      ],
     },
     {
       title: "Retalho",
-      description: "Sistema completo para lojas de retalho com gestão de vendas e stocks.",
+      description:
+        "Sistema completo para lojas de retalho com gestão de vendas e stocks.",
       image: "/Imagens/kretalho01.webp",
       icon: "🛒",
       features: [
@@ -202,8 +216,8 @@ const Solutions = () => {
         "Gestão de fornecedores e compras",
         "Faturação integrada",
         "Relatórios de margens por categoria",
-        "Gestão de espaços comerciais"
-      ]
+        "Gestão de espaços comerciais",
+      ],
     },
   ];
 
@@ -216,11 +230,12 @@ const Solutions = () => {
             {/* Header */}
             <div className="flex justify-between items-center mb-12">
               <div>
-                <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
                   Explore Nossas Soluções
-                </h1>
+                </h2>
                 <p className="text-lg text-gray-600 dark:text-gray-300">
-                  Descubra todas as funcionalidades dos nossos softwares certificados
+                  Descubra todas as funcionalidades dos nossos softwares
+                  certificados
                 </p>
               </div>
               <button
@@ -237,11 +252,11 @@ const Solutions = () => {
                 <div
                   key={index}
                   className={`relative bg-white dark:bg-[#001451] rounded-lg shadow-lg transition-all duration-500 cursor-pointer ${
-                    hoveredCard === index 
-                      ? 'scale-110 z-10 shadow-2xl' 
-                      : hoveredCard !== null 
-                        ? 'scale-95 opacity-70' 
-                        : 'scale-100'
+                    hoveredCard === index
+                      ? "scale-110 z-10 shadow-2xl"
+                      : hoveredCard !== null
+                        ? "scale-95 opacity-70"
+                        : "scale-100"
                   }`}
                   onMouseEnter={() => setHoveredCard(index)}
                   onMouseLeave={() => setHoveredCard(null)}
@@ -281,7 +296,9 @@ const Solutions = () => {
                     {hoveredCard === index && (
                       <div className="absolute inset-0 bg-white dark:bg-[#001451] rounded-lg p-6 shadow-2xl border-2 border-blue-500 overflow-y-auto">
                         <div className="text-center mb-4">
-                          <span className="text-4xl mb-2 block">{solution.icon}</span>
+                          <span className="text-4xl mb-2 block">
+                            {solution.icon}
+                          </span>
                           <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
                             {solution.title}
                           </h3>
@@ -298,14 +315,19 @@ const Solutions = () => {
                             Características Principais:
                           </h4>
                           <div className="space-y-1">
-                            {solution.features.slice(0, 4).map((feature: string, idx: number) => (
-                              <div key={idx} className="flex items-start space-x-2">
-                                <Check className="h-3 w-3 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
-                                <span className="text-xs text-gray-700 dark:text-gray-300">
-                                  {feature}
-                                </span>
-                              </div>
-                            ))}
+                            {solution.features
+                              .slice(0, 4)
+                              .map((feature: string, idx: number) => (
+                                <div
+                                  key={idx}
+                                  className="flex items-start space-x-2"
+                                >
+                                  <Check className="h-3 w-3 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                                  <span className="text-xs text-gray-700 dark:text-gray-300">
+                                    {feature}
+                                  </span>
+                                </div>
+                              ))}
                           </div>
                         </div>
 
@@ -324,7 +346,8 @@ const Solutions = () => {
             {/* Footer */}
             <div className="text-center mt-12">
               <p className="text-gray-600 dark:text-gray-300 mb-4">
-                Todos os nossos softwares são certificados pela Administração Geral Tributária
+                Todos os nossos softwares são certificados pela Administração
+                Geral Tributária
               </p>
               <div className="bg-blue-50 dark:bg-blue-900/30 inline-block px-6 py-3 rounded-lg">
                 <p className="text-lg font-bold text-blue-800 dark:text-blue-200">
@@ -378,14 +401,16 @@ const Solutions = () => {
                 </h3>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {selectedSolution.features.map((feature: string, index: number) => (
-                    <div key={index} className="flex items-start space-x-3">
-                      <Check className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-700 dark:text-gray-300 text-sm">
-                        {feature}
-                      </span>
-                    </div>
-                  ))}
+                  {selectedSolution.features.map(
+                    (feature: string, index: number) => (
+                      <div key={index} className="flex items-start space-x-3">
+                        <Check className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                        <span className="text-gray-700 dark:text-gray-300 text-sm">
+                          {feature}
+                        </span>
+                      </div>
+                    ),
+                  )}
                 </div>
 
                 <div className="mt-8 p-4 bg-blue-50 dark:bg-blue-900/30 rounded-lg text-center">
@@ -399,31 +424,41 @@ const Solutions = () => {
         </div>
       )}
 
-      <section ref={sectionRef} id="solutions" className="bg-gray-50 dark:bg-[#000F3D] py-20">
+      <section
+        ref={sectionRef}
+        id="solutions"
+        className="bg-gray-50 dark:bg-[#000F3D] py-20"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <p 
+            <p
               data-element="subtitle"
               className={`text-sm font-medium text-gray-600 dark:text-gray-400 mb-4 transition-all duration-700 ${
-                visibleElements.has('subtitle') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                visibleElements.has("subtitle")
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-4"
               }`}
             >
               Soluções
             </p>
-            <h2 
+            <h2
               data-element="title"
               className={`text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight transition-all duration-1000 delay-200 ${
-                visibleElements.has('title') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+                visibleElements.has("title")
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-6"
               }`}
             >
               Recursos que transformam
               <br />
               sua estratégia digital
             </h2>
-            <p 
+            <p
               data-element="description"
               className={`text-lg text-gray-600 dark:text-gray-300 max-w-4xl mx-auto transition-all duration-1000 delay-400 ${
-                visibleElements.has('description') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                visibleElements.has("description")
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-4"
               }`}
             >
               Desenvolvemos soluções tecnológicas que se adaptam às necessidades
@@ -438,7 +473,9 @@ const Solutions = () => {
                 data-element={`card-${index}`}
                 onClick={() => handleSolutionClick(solution)}
                 className={`rounded-lg p-6 shadow-sm hover:shadow-md transition-all duration-700 delay-${600 + index * 150} bg-white dark:bg-[#001451] cursor-pointer hover:scale-105 ${
-                  visibleElements.has(`card-${index}`) ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-5 scale-95'
+                  visibleElements.has(`card-${index}`)
+                    ? "opacity-100 translate-y-0 scale-100"
+                    : "opacity-0 translate-y-5 scale-95"
                 }`}
               >
                 {/* Solution Image */}
@@ -451,12 +488,14 @@ const Solutions = () => {
                       onError={(e) => {
                         // Fallback to placeholder if image fails to load
                         const target = e.target as HTMLImageElement;
-                        target.style.display = 'none';
-                        target.nextElementSibling?.classList.remove('hidden');
+                        target.style.display = "none";
+                        target.nextElementSibling?.classList.remove("hidden");
                       }}
                     />
                   ) : null}
-                  <div className={`w-16 h-16 bg-gray-200 dark:bg-gray-600 rounded-lg flex items-center justify-center ${solution.image ? 'hidden' : ''}`}>
+                  <div
+                    className={`w-16 h-16 bg-gray-200 dark:bg-gray-600 rounded-lg flex items-center justify-center ${solution.image ? "hidden" : ""}`}
+                  >
                     <span className="text-2xl">{solution.icon}</span>
                   </div>
                 </div>
@@ -472,10 +511,12 @@ const Solutions = () => {
             ))}
           </div>
 
-          <div 
+          <div
             data-element="cta-buttons"
             className={`flex flex-col sm:flex-row gap-4 justify-center items-center transition-all duration-1000 delay-1200 ${
-              visibleElements.has('cta-buttons') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              visibleElements.has("cta-buttons")
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-4"
             }`}
           >
             <Button
@@ -485,7 +526,7 @@ const Solutions = () => {
             >
               Explorar
             </Button>
-            <button 
+            <button
               onClick={handleDemonstrationClick}
               className="flex items-center text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium group"
             >
