@@ -23,7 +23,7 @@ const testimonials: Testimonial[] = [
   {
     id: 2,
     quote:
-      "A nossa lavandaria industrial precisava de organização. O KitandaSoft deu-nos clareza total! Controlamos entradas/saidas de roupa, faturamos por serviço e gerimos o cadastro de clientes com facilidade. O sistema é robusto e adapta-se perfeitamente a negócios baseados em serviços. Muito satisfeito!",
+      "A nossa lavandaria industrial precisava de organização. O KitandaSoft deu-nos clareza total! Controlamos entradas/saidas de roupa, facturamos por serviço e gerimos o cadastro de clientes com facilidade. O sistema é robusto e adapta-se perfeitamente a negócios baseados em serviços. Muito satisfeito!",
     name: "Maria Santos",
     title: "Proprietária",
     company: "Lavandaria",
@@ -41,7 +41,7 @@ const testimonials: Testimonial[] = [
   {
     id: 4,
     quote:
-      "Como dono de um café e bar, precisava de um sistema rápido e fiável. O KitandaSoft no POS é fantástico! Faturação rápida, gestão de mesas e controlo de stock integrado. Tornou o atendimento mais ágil e o fecho de caixa, infalível. Para restauração e retalho, é a eficiência que precisávamos.",
+      "Como dono de um café e bar, precisava de um sistema rápido e fiável. O KitandaSoft no POS é fantástico! Facturação rápida, gestão de mesas e controlo de stock integrado. Tornou o atendimento mais ágil e o fecho de caixa, infalível. Para restauração e retalho, é a eficiência que precisávamos.",
     name: "Ana Costa",
     title: "Fundadora",
     company: "Café e Bar",
@@ -50,7 +50,7 @@ const testimonials: Testimonial[] = [
   {
     id: 5,
     quote:
-      "Para a nossa empresa de prestação de serviços, a gestão de clientes e projetos era descentralizada. O KitandaSoft centralizou tudo! Emitimos faturas, controlamos o fluxo de entrada/saída e gerimos o stock de materiais usados. É flexível e adapta-se perfeitamente ao nosso modelo de negócio. Fantástico!",
+      "Para a nossa empresa de prestação de serviços, a gestão de clientes e projetos era descentralizada. O KitandaSoft centralizou tudo! Emitimos facturas, controlamos o fluxo de entrada/saída e gerimos o stock de materiais usados. É flexível e adapta-se perfeitamente ao nosso modelo de negócio. Fantástico!",
     name: "Pedro Mendes",
     title: "CTO",
     company: "Digital Corp",

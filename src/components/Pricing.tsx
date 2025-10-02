@@ -59,12 +59,28 @@ const Pricing = () => {
     return () => observer.disconnect();
   }, [visibleSections]);
 
+  // Pre-load local plans visibility when component mounts
+  useEffect(() => {
+    // Pre-load all sections for local plans so they're ready when user switches
+    const localSections = [
+      "header",
+      "Facturação Base – Local",
+      "special-plans",
+    ];
+
+    setVisibleSections((prev) => {
+      const newSet = new Set(prev);
+      localSections.forEach((section) => newSet.add(section));
+      return newSet;
+    });
+  }, []);
+
   const onlinePlans: Plan[] = [
     {
       id: "pos-retalho-online",
-      name: "Faturação Venda ao Balcão (POS Retalho)",
+      name: "Facturação Venda ao Balcão (POS Retalho)",
       price: "83.000,00",
-      category: "Faturação Base – Online",
+      category: "Facturação Base – Online",
       features: [
         "Vendas",
         "Stock base",
@@ -78,9 +94,9 @@ const Pricing = () => {
       id: "faturacao-backoffice-online",
       name: "Faturação BackOffice",
       price: "145.000,00",
-      category: "Faturação Base – Online",
+      category: "Facturação Base – Online",
       features: [
-        "Faturação de Cliente em BackOffice",
+        "Facturação de Cliente em BackOffice",
         "Contas Correntes",
         "Instalação Online",
         "Formação",
@@ -90,9 +106,9 @@ const Pricing = () => {
     },
     {
       id: "pos-rest-online",
-      name: "Faturação Restauração (POS REST)",
+      name: "Facturação Restauração (POS REST)",
       price: "180.000,00",
-      category: "Faturação Base – Online",
+      category: "Facturação Base – Online",
       features: [
         "Vendas",
         "Stock base",
@@ -108,7 +124,7 @@ const Pricing = () => {
       category: "Gestão Comercial – Online",
       popular: true,
       features: [
-        "Faturação Base BackOffice – Online",
+        "Facturação Base BackOffice – Online",
         "Compras e Contas Correntes de Fornecedores",
         "POS Retalho/Restauração",
         "Suporte Técnico Remoto Grátis",
@@ -131,9 +147,9 @@ const Pricing = () => {
   const localPlans: Plan[] = [
     {
       id: "pos-retalho-local",
-      name: "Faturação Venda ao Balcão (POS Retalho)",
+      name: "Facturação Venda ao Balcão (POS Retalho)",
       price: "150.000,00",
-      category: "Faturação Base – Local",
+      category: "Facturação Base – Local",
       features: [
         "Vendas",
         "Stock base",
@@ -145,11 +161,11 @@ const Pricing = () => {
     },
     {
       id: "faturacao-backoffice-local",
-      name: "Faturação BackOffice",
+      name: "Facturação BackOffice",
       price: "270.000,00",
-      category: "Faturação Base – Local",
+      category: "Facturação Base – Local",
       features: [
-        "Faturação de Cliente em BackOffice",
+        "Facturação de Cliente em BackOffice",
         "Contas Correntes",
         "Instalação Local",
         "Formação",
@@ -159,9 +175,9 @@ const Pricing = () => {
     },
     {
       id: "pos-rest-local",
-      name: "Faturação Restauração (POS REST)",
+      name: "Facturação Restauração (POS REST)",
       price: "230.000,00",
-      category: "Faturação Base – Local",
+      category: "Facturação Base – Local",
       features: [
         "Vendas",
         "Stock base",
@@ -179,7 +195,7 @@ const Pricing = () => {
       category: "Gestão Comercial – Local",
       popular: true,
       features: [
-        "Faturação Base BackOffice – Online",
+        "Facturação Base BackOffice – Online",
         "Compras e Contas Correntes de Fornecedores",
         "POS Retalho/Restauração",
         "Suporte Técnico Remoto Grátis",

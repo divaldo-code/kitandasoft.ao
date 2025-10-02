@@ -30,7 +30,7 @@ const Footer = () => {
               />
             </div>
             <p className="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
-              Emite faturas certificadas pela AGT em minutos de forma fácil.
+              Emite facturas certificadas pela AGT em minutos de forma fácil.
               <br />
               Comece hoje!
             </p>

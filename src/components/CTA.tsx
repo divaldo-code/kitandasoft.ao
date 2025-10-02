@@ -192,8 +192,8 @@ const CTA = () => {
                     : "opacity-0 translate-y-4"
                 }`}
               >
-                Não perca mais tempo. Comece hoje a otimizar seus processos com
-                nossa solução completa.
+                Não perca mais tempo. Comece hoje a optimizar seus processos com
+                nossa solução completa de facturação em Angola.
               </p>
             </div>
 

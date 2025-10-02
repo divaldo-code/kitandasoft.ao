@@ -1,6 +1,14 @@
 import { useState, useEffect } from "react";
 import { Button } from "./ui/button";
-import { ArrowLeft, Shield, Eye, Lock, Server, Users, FileText } from "lucide-react";
+import {
+  ArrowLeft,
+  Shield,
+  Eye,
+  Lock,
+  Server,
+  Users,
+  FileText,
+} from "lucide-react";
 
 const PrivacyPolicy = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -23,7 +31,9 @@ const PrivacyPolicy = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-12 px-4">
-      <div className={`max-w-4xl mx-auto transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+      <div
+        className={`max-w-4xl mx-auto transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+      >
         {/* Header */}
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 mb-8">
           <div className="flex items-center justify-between mb-6">
@@ -48,7 +58,7 @@ const PrivacyPolicy = () => {
           </p>
           <div className="mt-4 p-4 bg-blue-50 dark:bg-blue-900/30 rounded-lg">
             <p className="text-sm font-medium text-blue-800 dark:text-blue-200">
-              Software Certificado pela AGT Nº 505/AGT/2025
+              software de facturação Certificado pela AGT Nº 505/AGT/2025
             </p>
           </div>
         </div>
@@ -62,13 +72,16 @@ const PrivacyPolicy = () => {
               Introdução
             </h2>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              A GC LUCAN, empresa responsável pelo desenvolvimento e comercialização do software KitandaSoft, 
-              compromete-se a proteger a privacidade e os dados pessoais dos nossos utilizadores. Esta política 
-              explica como recolhemos, utilizamos e protegemos as suas informações nas duas modalidades do nosso software.
+              A GC LUCAN, empresa responsável pelo desenvolvimento e
+              comercialização do software de facturação KitandaSoft,
+              compromete-se a proteger a privacidade e os dados pessoais dos
+              nossos utilizadores. Esta política explica como recolhemos,
+              utilizamos e protegemos as suas informações nas duas modalidades
+              do nosso software de facturação.
             </p>
           </section>
 
-          {/* Software Versions */}
+          {/* software de facturação Versions */}
           <section>
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center">
               <Server className="h-6 w-6 mr-2 text-blue-600 dark:text-blue-400" />
@@ -109,14 +122,34 @@ const PrivacyPolicy = () => {
               Recolha de Dados
             </h2>
             <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Dados Recolhidos:</h3>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                Dados Recolhidos:
+              </h3>
               <ul className="text-gray-700 dark:text-gray-300 space-y-2 ml-4">
-                <li>• <strong>Dados da Empresa:</strong> Nome, NIF, endereço, contactos</li>
-                <li>• <strong>Dados de Utilizadores:</strong> Nome, email, função, permissões</li>
-                <li>• <strong>Dados de Clientes:</strong> Informações comerciais e de faturação</li>
-                <li>• <strong>Dados de Fornecedores:</strong> Informações comerciais e de compras</li>
-                <li>• <strong>Dados Operacionais:</strong> Vendas, stocks, movimentos financeiros</li>
-                <li>• <strong>Dados Técnicos:</strong> Logs de sistema, estatísticas de uso</li>
+                <li>
+                  • <strong>Dados da Empresa:</strong> Nome, NIF, endereço,
+                  contactos
+                </li>
+                <li>
+                  • <strong>Dados de Utilizadores:</strong> Nome, email, função,
+                  permissões
+                </li>
+                <li>
+                  • <strong>Dados de Clientes:</strong> Informações comerciais e
+                  de facturação
+                </li>
+                <li>
+                  • <strong>Dados de Fornecedores:</strong> Informações
+                  comerciais e de compras
+                </li>
+                <li>
+                  • <strong>Dados Operacionais:</strong> Vendas, stocks,
+                  movimentos financeiros
+                </li>
+                <li>
+                  • <strong>Dados Técnicos:</strong> Logs de sistema,
+                  estatísticas de uso
+                </li>
               </ul>
             </div>
           </section>
@@ -129,7 +162,9 @@ const PrivacyPolicy = () => {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Versão Online:</h3>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+                  Versão Online:
+                </h3>
                 <ul className="text-gray-700 dark:text-gray-300 space-y-2 text-sm">
                   <li>• Servidores localizados em Angola</li>
                   <li>• Encriptação SSL/TLS</li>
@@ -140,7 +175,9 @@ const PrivacyPolicy = () => {
                 </ul>
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Versão Local:</h3>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+                  Versão Local:
+                </h3>
                 <ul className="text-gray-700 dark:text-gray-300 space-y-2 text-sm">
                   <li>• Dados sob controlo total do cliente</li>
                   <li>• Responsabilidade de segurança do cliente</li>
@@ -161,15 +198,33 @@ const PrivacyPolicy = () => {
             </h2>
             <div className="space-y-4">
               <p className="text-gray-700 dark:text-gray-300">
-                De acordo com a legislação angolana de proteção de dados, tem os seguintes direitos:
+                De acordo com a legislação angolana de proteção de dados, tem os
+                seguintes direitos:
               </p>
               <ul className="text-gray-700 dark:text-gray-300 space-y-2 ml-4">
-                <li>• <strong>Direito de Acesso:</strong> Consultar os seus dados pessoais</li>
-                <li>• <strong>Direito de Retificação:</strong> Corrigir dados incorretos</li>
-                <li>• <strong>Direito de Eliminação:</strong> Solicitar remoção de dados</li>
-                <li>• <strong>Direito de Portabilidade:</strong> Exportar os seus dados</li>
-                <li>• <strong>Direito de Oposição:</strong> Opor-se ao tratamento</li>
-                <li>• <strong>Direito de Limitação:</strong> Restringir o processamento</li>
+                <li>
+                  • <strong>Direito de Acesso:</strong> Consultar os seus dados
+                  pessoais
+                </li>
+                <li>
+                  • <strong>Direito de Retificação:</strong> Corrigir dados
+                  incorretos
+                </li>
+                <li>
+                  • <strong>Direito de Eliminação:</strong> Solicitar remoção de
+                  dados
+                </li>
+                <li>
+                  • <strong>Direito de Portabilidade:</strong> Exportar os seus
+                  dados
+                </li>
+                <li>
+                  • <strong>Direito de Oposição:</strong> Opor-se ao tratamento
+                </li>
+                <li>
+                  • <strong>Direito de Limitação:</strong> Restringir o
+                  processamento
+                </li>
               </ul>
             </div>
           </section>
@@ -181,13 +236,26 @@ const PrivacyPolicy = () => {
             </h2>
             <div className="space-y-4">
               <p className="text-gray-700 dark:text-gray-300">
-                Os seus dados podem ser partilhados apenas nas seguintes situações:
+                Os seus dados podem ser partilhados apenas nas seguintes
+                situações:
               </p>
               <ul className="text-gray-700 dark:text-gray-300 space-y-2 ml-4">
-                <li>• <strong>Autoridade Tributária:</strong> Cumprimento de obrigações fiscais (SAFT-AO)</li>
-                <li>• <strong>Autoridades Competentes:</strong> Quando exigido por lei</li>
-                <li>• <strong>Prestadores de Serviços:</strong> Apenas para operação do sistema</li>
-                <li>• <strong>Nunca para fins comerciais</strong> sem o seu consentimento explícito</li>
+                <li>
+                  • <strong>Autoridade Tributária:</strong> Cumprimento de
+                  obrigações fiscais (SAFT-AO)
+                </li>
+                <li>
+                  • <strong>Autoridades Competentes:</strong> Quando exigido por
+                  lei
+                </li>
+                <li>
+                  • <strong>Prestadores de Serviços:</strong> Apenas para
+                  operação do sistema
+                </li>
+                <li>
+                  • <strong>Nunca para fins comerciais</strong> sem o seu
+                  consentimento explícito
+                </li>
               </ul>
             </div>
           </section>
@@ -215,18 +283,31 @@ const PrivacyPolicy = () => {
             </h2>
             <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6">
               <p className="text-gray-700 dark:text-gray-300 mb-4">
-                Para questões sobre privacidade ou exercer os seus direitos, contacte-nos:
+                Para questões sobre privacidade ou exercer os seus direitos,
+                contacte-nos:
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                 <div>
-                  <p><strong>Empresa:</strong> GC LUCAN</p>
-                  <p><strong>Email:</strong> comercial@lucansolucoes.com</p>
-                  <p><strong>Website:</strong> www.lucansolucoes.co.ao</p>
+                  <p>
+                    <strong>Empresa:</strong> GC LUCAN
+                  </p>
+                  <p>
+                    <strong>Email:</strong> comercial@lucansolucoes.com
+                  </p>
+                  <p>
+                    <strong>Website:</strong> www.lucansolucoes.co.ao
+                  </p>
                 </div>
                 <div>
-                  <p><strong>Telefone:</strong> +244 222 780 264</p>
-                  <p><strong>Móvel:</strong> +244 944 178 180</p>
-                  <p><strong>Certificação:</strong> Nº 505/AGT/2025</p>
+                  <p>
+                    <strong>Telefone:</strong> +244 222 780 264
+                  </p>
+                  <p>
+                    <strong>Móvel:</strong> +244 944 178 180
+                  </p>
+                  <p>
+                    <strong>Certificação:</strong> Nº 505/AGT/2025
+                  </p>
                 </div>
               </div>
             </div>
@@ -238,8 +319,9 @@ const PrivacyPolicy = () => {
               Atualizações da Política
             </h2>
             <p className="text-gray-700 dark:text-gray-300">
-              Esta política pode ser atualizada periodicamente. Notificaremos sobre alterações significativas 
-              através do nosso website ou por email. A versão mais recente estará sempre disponível em 
+              Esta política pode ser atualizada periodicamente. Notificaremos
+              sobre alterações significativas através do nosso website ou por
+              email. A versão mais recente estará sempre disponível em
               www.lucansolucoes.co.ao.
             </p>
           </section>

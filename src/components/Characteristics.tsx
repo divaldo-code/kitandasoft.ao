@@ -34,7 +34,7 @@ const Characteristics = () => {
     {
       title: "Emissão de Documentos",
       features: [
-        "Faturas e recibos automáticos",
+        "Facturas e recibos automáticos",
         "Notas de crédito e débito",
         "Orçamentos personalizados",
         "Guias de remessa digitais",

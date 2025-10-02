@@ -273,7 +273,7 @@ const Hero = () => {
                       : "opacity-0 translate-y-4"
                   }`}
                 >
-                  Software de faturação inovador certificado pela AGT que se
+                  Software de facturação inovador certificado pela AGT que se
                   adapta ao seu negócio! Destinado a profissionais liberais,
                   micro, pequenas e médias empresas. Sem investimento inicial,
                   completo e intuitivo.
@@ -283,7 +283,7 @@ const Hero = () => {
               {/* Features */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
-                  "Faturação Online/Offline",
+                  "Facturação Online/Offline",
                   "Gestão de Stock",
                   "Contas Correntes",
                   "POS",
@@ -353,13 +353,13 @@ const Hero = () => {
                 <div className="flex items-center space-x-2">
                   <Users className="h-4 w-4 text-gray-400 dark:text-gray-500" />
                   <span className="text-sm text-gray-600 dark:text-gray-400">
-                    +1000 empresas
+                    +1000 Empresas
                   </span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <TrendingUp className="h-4 w-4 text-gray-400 dark:text-gray-500" />
                   <span className="text-sm text-gray-600 dark:text-gray-400">
-                    98% satisfação
+                    98% Satisfação
                   </span>
                 </div>
               </div>
@@ -425,7 +425,7 @@ const Hero = () => {
                   <div className="space-y-2">
                     <div className="flex items-center justify-between text-sm">
                       <span className="text-gray-600 dark:text-gray-400">
-                        Fatura #1234 criada
+                        Factura #1234 criada
                       </span>
                       <span className="text-green-600 dark:text-green-400">
                         125.000,00 Kz

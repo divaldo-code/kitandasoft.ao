@@ -1,12 +1,27 @@
 import { useState, useEffect, useRef } from "react";
 import { Button } from "./ui/button";
-import { ArrowRight, X, Check } from "lucide-react";
+import { ArrowRight, X, Check, Monitor } from "lucide-react";
 
 const Solutions = () => {
   const [visibleElements, setVisibleElements] = useState<Set<string>>(new Set());
   const [showModal, setShowModal] = useState(false);
+  const [showExploreModal, setShowExploreModal] = useState(false);
   const [selectedSolution, setSelectedSolution] = useState<any>(null);
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const [isDesktop, setIsDesktop] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
+
+  // Check if it's desktop
+  useEffect(() => {
+    const checkIsDesktop = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+
+    checkIsDesktop();
+    window.addEventListener('resize', checkIsDesktop);
+
+    return () => window.removeEventListener('resize', checkIsDesktop);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -33,7 +48,7 @@ const Solutions = () => {
 
   // Prevent scrolling when modal is open
   useEffect(() => {
-    if (showModal) {
+    if (showModal || showExploreModal) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
@@ -42,7 +57,7 @@ const Solutions = () => {
     return () => {
       document.body.style.overflow = 'unset';
     };
-  }, [showModal]);
+  }, [showModal, showExploreModal]);
 
   const handleDemonstrationClick = () => {
     const message = "Quero obter uma demostração do KitandaSoft, podemos agendar uma seção remota?";
@@ -52,6 +67,21 @@ const Solutions = () => {
   const handleSolutionClick = (solution: any) => {
     setSelectedSolution(solution);
     setShowModal(true);
+  };
+
+  const handleExploreClick = () => {
+    if (isDesktop) {
+      setShowExploreModal(true);
+    } else {
+      // Mobile popup
+      setShowModal(true);
+      setSelectedSolution({
+        title: "Visualização Completa",
+        description: "Para uma melhor experiência de navegação",
+        icon: "💻",
+        features: ["Use a versão web para visualizar todas as funcionalidades"]
+      });
+    }
   };
 
   const solutions = [
@@ -179,6 +209,133 @@ const Solutions = () => {
 
   return (
     <>
+      {/* Explore Modal - Desktop Full Screen */}
+      {showExploreModal && isDesktop && (
+        <div className="fixed inset-0 bg-white dark:bg-[#000F3D] z-[100] overflow-y-auto">
+          <div className="min-h-screen p-8">
+            {/* Header */}
+            <div className="flex justify-between items-center mb-12">
+              <div>
+                <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                  Explore Nossas Soluções
+                </h1>
+                <p className="text-lg text-gray-600 dark:text-gray-300">
+                  Descubra todas as funcionalidades dos nossos softwares certificados
+                </p>
+              </div>
+              <button
+                onClick={() => setShowExploreModal(false)}
+                className="p-3 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+              >
+                <X className="h-8 w-8" />
+              </button>
+            </div>
+
+            {/* Solutions Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+              {solutions.map((solution, index) => (
+                <div
+                  key={index}
+                  className={`relative bg-white dark:bg-[#001451] rounded-lg shadow-lg transition-all duration-500 cursor-pointer ${
+                    hoveredCard === index 
+                      ? 'scale-110 z-10 shadow-2xl' 
+                      : hoveredCard !== null 
+                        ? 'scale-95 opacity-70' 
+                        : 'scale-100'
+                  }`}
+                  onMouseEnter={() => setHoveredCard(index)}
+                  onMouseLeave={() => setHoveredCard(null)}
+                >
+                  {/* Certification Sticker */}
+                  <div className="absolute -top-2 -right-2 bg-blue-600 text-white text-xs px-2 py-1 rounded-full font-bold z-20">
+                    Certificado AGT
+                  </div>
+
+                  <div className="p-6">
+                    {/* Solution Image */}
+                    <div className="bg-gray-100 dark:bg-gray-700 rounded-lg h-32 mb-4 flex items-center justify-center overflow-hidden">
+                      {solution.image ? (
+                        <img
+                          src={solution.image}
+                          alt={solution.title}
+                          className="w-full h-full object-cover rounded-lg"
+                        />
+                      ) : (
+                        <span className="text-3xl">{solution.icon}</span>
+                      )}
+                    </div>
+
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                      {solution.title}
+                    </h3>
+
+                    <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">
+                      Software de Facturação - {solution.title}
+                    </p>
+
+                    <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4">
+                      {solution.description}
+                    </p>
+
+                    {/* Expanded Content on Hover */}
+                    {hoveredCard === index && (
+                      <div className="absolute inset-0 bg-white dark:bg-[#001451] rounded-lg p-6 shadow-2xl border-2 border-blue-500 overflow-y-auto">
+                        <div className="text-center mb-4">
+                          <span className="text-4xl mb-2 block">{solution.icon}</span>
+                          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
+                            {solution.title}
+                          </h3>
+                          <p className="text-sm text-blue-600 dark:text-blue-400 font-medium mb-2">
+                            Software de Facturação - {solution.title}
+                          </p>
+                          <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                            {solution.description}
+                          </p>
+                        </div>
+
+                        <div className="mb-4">
+                          <h4 className="font-semibold text-gray-900 dark:text-white mb-2 text-sm">
+                            Características Principais:
+                          </h4>
+                          <div className="space-y-1">
+                            {solution.features.slice(0, 4).map((feature: string, idx: number) => (
+                              <div key={idx} className="flex items-start space-x-2">
+                                <Check className="h-3 w-3 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                                <span className="text-xs text-gray-700 dark:text-gray-300">
+                                  {feature}
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                        <div className="bg-blue-50 dark:bg-blue-900/30 p-3 rounded-lg text-center">
+                          <p className="text-xs font-bold text-blue-800 dark:text-blue-200">
+                            Certificado pela AGT Nº 505/AGT/2025
+                          </p>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Footer */}
+            <div className="text-center mt-12">
+              <p className="text-gray-600 dark:text-gray-300 mb-4">
+                Todos os nossos softwares são certificados pela Administração Geral Tributária
+              </p>
+              <div className="bg-blue-50 dark:bg-blue-900/30 inline-block px-6 py-3 rounded-lg">
+                <p className="text-lg font-bold text-blue-800 dark:text-blue-200">
+                  Certificação AGT Nº 505/AGT/2025
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Solution Modal */}
       {showModal && selectedSolution && (
         <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-[100] p-4">
@@ -322,6 +479,7 @@ const Solutions = () => {
             }`}
           >
             <Button
+              onClick={handleExploreClick}
               variant="outline"
               className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 dark:bg-blue-950 border-[black] bg-accent dark:text-[#e1e1e1]"
             >
