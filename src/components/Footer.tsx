@@ -276,10 +276,10 @@ const Footer = () => {
                 Termos de serviço
               </a>
               <a
-                href="#"
+                href="https://itlael.ao/desenvolvimento"
                 className="text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 underline"
               >
-                Configurações de cookies
+                Desenvolvido por ITLAEL
               </a>
             </div>
           </div>

@@ -1,12 +1,22 @@
 User-agent: *
 Allow: /
 
-# Sitemap
-Sitemap: https://88f07001-c1cd-4060-a9e5-43f9a026c78b.canvases.tempo.build/sitemap.xml
+# Sitemaps
+Sitemap: https://www.kitandasoft.ao/sitemap.xml
+Sitemap: https://kitandasoft.ao/sitemap.xml
 
-# Disallow storyboard and development files
+# Diretórios de desenvolvimento
 Disallow: /tempobook/
 Disallow: /src/
-Disallow: /*.json
-Disallow: /*.ts
-Disallow: /*.tsx
+Disallow: /node_modules/
+Disallow: /vendor/
+
+# Arquivos de desenvolvimento específicos
+Disallow: /package.json
+Disallow: /package-lock.json
+Disallow: /composer.json
+Disallow: /tsconfig.json
+Disallow: /*.test.ts
+Disallow: /*.test.tsx
+Disallow: /*.spec.ts
+Disallow: /*.spec.tsx
