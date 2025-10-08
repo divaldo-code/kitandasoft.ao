@@ -8,18 +8,35 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import routes from "tempo-routes";
 
 function App() {
+  // Create combined routes array
+  const appRoutes = [
+    {
+      path: "/",
+      element: <Home />
+    },
+    {
+      path: "/privacy-policy",
+      element: <PrivacyPolicy />
+    },
+    {
+      path: "/terms-of-service", 
+      element: <TermsOfService />
+    },
+    // Add tempo routes if in development
+    ...(import.meta.env.VITE_TEMPO === "true" ? routes : []),
+    // Catch-all route for 404 - must be last
+    {
+      path: "*",
+      element: <NotFound />
+    }
+  ];
+
+  const routeElements = useRoutes(appRoutes);
+
   return (
     <ThemeProvider>
       <Suspense fallback={<p>Loading...</p>}>
-        <>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="/terms-of-service" element={<TermsOfService />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-          {import.meta.env.VITE_TEMPO === "true" && useRoutes(routes)}
-        </>
+        {routeElements}
       </Suspense>
     </ThemeProvider>
   );
