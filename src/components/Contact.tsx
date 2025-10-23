@@ -1,6 +1,10 @@
 import { Mail, Phone, MapPin, ArrowRight } from "lucide-react";
 
 const Contact = () => {
+  const handleLocationClick = () => {
+    window.open("https://maps.app.goo.gl/cBSJNEDRtpGY6HWW9", "_blank");
+  };
+
   return (
     <section className="bg-gray-50 dark:bg-[#000F3D] py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -58,7 +62,7 @@ const Contact = () => {
                     href="tel:+244923123456"
                     className="text-gray-900 dark:text-white font-medium hover:text-blue-600 dark:hover:text-blue-400"
                   >
-                    +244 923 123 456
+                    +244 944 178 180
                   </a>
                 </div>
               </div>
@@ -72,10 +76,14 @@ const Contact = () => {
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
                     Escritório
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-300 mb-2">
-                    Visite nossa sede localizada no Nova Vida rua 1234
-                  </p>
-                  <button className="flex items-center text-gray-900 dark:text-white font-medium hover:text-blue-600 dark:hover:text-blue-400 group">
+                  <div className="text-gray-600 dark:text-gray-300 mb-2 leading-relaxed">
+                    <div>Urbanização Nova Vida, Rua 47, Prédio 153</div>
+                    <div>Apt nº 7, Luanda-Angola</div>
+                  </div>
+                  <button 
+                    onClick={handleLocationClick}
+                    className="flex items-center text-gray-900 dark:text-white font-medium hover:text-blue-600 dark:hover:text-blue-400 group"
+                  >
                     Ver localização
                     <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
                   </button>
@@ -84,26 +92,48 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* Right Side - Map Placeholder */}
+          {/* Right Side - Interactive Map */}
           <div className="relative">
-            <div className="bg-gray-200 dark:bg-gray-700 rounded-lg h-96 lg:h-[500px] flex items-center justify-center relative overflow-hidden">
-              {/* Map placeholder with location pin */}
-              <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-300 dark:from-gray-700 dark:to-gray-800"></div>
-              <div className="relative z-10 flex items-center justify-center">
-                <div className="bg-gray-400 dark:bg-gray-600 rounded-full p-6">
-                  <MapPin className="h-12 w-12 text-white" />
-                </div>
-              </div>
+            <div className="bg-gray-200 dark:bg-gray-700 rounded-lg h-96 lg:h-[500px] relative overflow-hidden">
+              {/* Embedded Google Map */}
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3942.8234567890123!2d13.233482!3d-8.907311!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOMKwNTQnMjYuMyJTIDEzwrAxNCcwMC41IkU!5e0!3m2!1spt!2sao!4v1643723400000!5m2!1spt!2sao"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="rounded-lg"
+              ></iframe>
 
-              {/* Subtle grid pattern */}
-              <div className="absolute inset-0 opacity-20">
-                <div className="grid grid-cols-8 grid-rows-8 h-full w-full">
-                  {Array.from({ length: 64 }).map((_, i) => (
-                    <div
-                      key={i}
-                      className="border border-gray-300 dark:border-gray-600"
-                    ></div>
-                  ))}
+              {/* Custom Pin Overlay */}
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-full z-10 group">
+                {/* Tooltip */}
+                <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
+                  <div className="bg-gray-900 text-white text-sm px-3 py-2 rounded-lg shadow-lg whitespace-nowrap">
+                    Software da GC LUCAN, certificado pela AGT
+                    <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900"></div>
+                  </div>
+                </div>
+
+                {/* Custom Pin with KitandaSoft Logo */}
+                <div className="relative">
+                  <div className="bg-blue-600 rounded-full p-3 shadow-lg border-4 border-white">
+                    <img 
+                      src="/kitandasoft-icon.webp" 
+                      alt="KitandaSoft" 
+                      className="w-8 h-8 object-contain"
+                      onError={(e) => {
+                        // Fallback to MapPin icon if logo fails to load
+                        e.currentTarget.style.display = 'none';
+                        e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                      }}
+                    />
+                    <MapPin className="w-8 h-8 text-white hidden" />
+                  </div>
+                  {/* Pin point */}
+                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-8 border-transparent border-t-blue-600"></div>
                 </div>
               </div>
             </div>
