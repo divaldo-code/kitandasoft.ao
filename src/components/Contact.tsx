@@ -11,9 +11,9 @@ const Contact = () => {
     };
 
     checkIsDesktop();
-    window.addEventListener('resize', checkIsDesktop);
+    window.addEventListener("resize", checkIsDesktop);
 
-    return () => window.removeEventListener('resize', checkIsDesktop);
+    return () => window.removeEventListener("resize", checkIsDesktop);
   }, []);
 
   const handleLocationClick = () => {
@@ -23,19 +23,29 @@ const Contact = () => {
   const handlePhoneClick = () => {
     if (isDesktop) {
       // Desktop: Open WhatsApp
-      const message = "Olá, gostaria de saber mais sobre os softwares da KitandaSoft.";
-      window.open(`https://wa.me/244944178180?text=${encodeURIComponent(message)}`, "_blank");
+      const message =
+        "Olá, gostaria de saber mais sobre os softwares da KitandaSoft.";
+      window.open(
+        `https://wa.me/244944178180?text=${encodeURIComponent(message)}`,
+        "_blank",
+      );
     } else {
       // Mobile: Show options (call or WhatsApp)
-      const userChoice = confirm("Escolha uma opção:\nOK = Ligar\nCancelar = WhatsApp");
-      
+      const userChoice = confirm(
+        "Escolha uma opção:\nOK = Ligar\nCancelar = WhatsApp",
+      );
+
       if (userChoice) {
         // User chose to call
         window.location.href = "tel:+244944178180";
       } else {
         // User chose WhatsApp
-        const message = "Olá, gostaria de saber mais sobre os softwares da KitandaSoft.";
-        window.open(`https://wa.me/244944178180?text=${encodeURIComponent(message)}`, "_blank");
+        const message =
+          "Olá, gostaria de saber mais sobre os softwares da KitandaSoft.";
+        window.open(
+          `https://wa.me/244944178180?text=${encodeURIComponent(message)}`,
+          "_blank",
+        );
       }
     }
   };
@@ -80,7 +90,7 @@ const Contact = () => {
                     href="mailto:comercial@lucansolucoes.co.ao"
                     className="text-gray-900 dark:text-white font-medium hover:text-blue-600 dark:hover:text-blue-400"
                   >
-                    comercial@kitandasoft.ao
+                    comercial@lucansolucoes.co.ao
                   </a>
                 </div>
               </div>
@@ -116,7 +126,7 @@ const Contact = () => {
                     Escritório
                   </h3>
                   <div className="text-gray-600 dark:text-gray-300 mb-2 leading-relaxed">
-                    <div>Urbanização Nova Vida, Rua 47, Prédio 153</div>
+                    <div>Urbanização Nova Vida, Rua 48, Prédio 153</div>
                     <div>Apt nº 7, Luanda-Angola</div>
                   </div>
                   <button
@@ -147,7 +157,7 @@ const Contact = () => {
               ></iframe>
 
               {/* Custom Pin Overlay - Clickable */}
-              <div 
+              <div
                 className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-full z-10 group cursor-pointer"
                 onClick={handlePinClick}
               >
