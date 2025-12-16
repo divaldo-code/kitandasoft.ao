@@ -8,10 +8,16 @@ import FAQ from "./FAQ";
 import CTA from "./CTA";
 import Contact from "./Contact";
 import Footer from "./Footer";
+import ChristmasDecorations from "./ChristmasDecorations";
+import ChristmasPopup from "./ChristmasPopup";
+import ChristmasPreloader from "./ChristmasPreloader";
 
 function Home() {
   return (
     <div className="min-h-screen bg-dark-bg dark:bg-[#000f3d] border-dark-bg">
+      <ChristmasPreloader />
+      <ChristmasDecorations />
+      <ChristmasPopup />
       <Header />
       <Hero className="border-[0px] border-dark-background" />
       <div id="solutions">
