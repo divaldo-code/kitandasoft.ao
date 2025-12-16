@@ -1,5 +1,6 @@
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
+import React from "react";
 import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
 
 const Footer = () => {
@@ -196,7 +197,7 @@ const Footer = () => {
           </div>
 
           {/* Social Media Column */}
-          <div>
+          <div className="flex flex-col">
             <h3 className="font-semibold text-gray-900 dark:text-white mb-4">
               Siga-nos
             </h3>
